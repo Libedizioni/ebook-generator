@@ -1,0 +1,18 @@
+<dc:title>BOOK_TITLE</dc:title>
+<dc:creator opf:file-as="AUTHOR_BOOK" opf:role="aut">BOOK_AUTHOR</dc:creator>
+<dc:creator opf:file-as="translator" opf:role="trl">TRANSLATOR</dc:creator>
+<dc:creator opf:file-as="cover" opf:role="cov">COVER_BY</dc:creator>
+<dc:contributor opf:file-as="design" opf:role="edt">DESIGN</dc:contributor>
+<dc:contributor opf:file-as="layout" opf:role="bkp">LAYOUT</dc:contributor>
+<dc:contributor opf:file-as="publisher" opf:role="pbl">PUBLISHER</dc:contributor>
+<dc:language xsi:type="http://purl.org/dc/terms/ISO639-2">LANGUAGE</dc:language>
+<dc:date opf:event="publication">DATE</dc:date>
+<dc:publisher>PUBLISHER</dc:publisher>
+<dc:identifier opf:scheme="isbn">BOOK_ISBN</dc:identifier>
+<dc:description>BOOK_DESCRIPTION</dc:description>
+<dc:subject xsi:type="http://purl.org/dc/terms/LCSH">Letteratura</dc:subject>
+<dc:subject xsi:type="http://purl.org/dc/terms/LCSH">Euskara</dc:subject>
+<dc:type>Text</dc:type>
+<dc:format>epub</dc:format>
+<dc:rights>© DATE COPYRIGHT, LICENSE</dc:rights>
+<dc:rights>LEGALCODE</dc:rights>

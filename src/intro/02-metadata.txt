@@ -1,0 +1,15 @@
+{.CENTER} [ La traduzione di quest’opera è stata realizzata con il contributo di Instituto basco Etxepare - Etxepare Euskal Institutua ]
+
+{.RIGHT} Titolo originale **ORIGINAL_TITLE**
+
+{.RIGHT} Editoriale originale **ORIGINAL_PUBLISHER, ORIGINAL_YEAR**
+
+{.RIGHT} Traduzione **TRANSLATOR**
+
+{.RIGHT} Immagine della copertina **COVER_BY**
+
+{.RIGHT} Disegno e impaginazione **DESIGN, LAYOUT**
+
+{.RIGHT} BOOK_ISBN
+
+{.RIGHT} DATE COPYRIGHT
