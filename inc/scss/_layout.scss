@@ -1,0 +1,88 @@
+///
+/// General elements layout
+///
+
+html,
+body {
+    font-family: $base_font;
+    font-size: $base_font_size;
+    // margin: 5%;
+    text-align: justify;
+}
+
+
+p {
+    font-family: $base_font;
+    // sets a minimum number of characters before and after the break
+    // hyphenate-lines: 3;
+    // cleaning up the ragged lines and breaks
+    // hyphens: auto;
+    // non-standart css for webkit
+    // word-break: break-word;
+    // word-wrap: break-word;
+}
+p + p {
+    margin-top: 0;
+    text-indent: 1.3em;
+}
+hr {
+    visibility: hidden;
+}
+
+
+/**
+ * Headings
+ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+     font-family: $heading_font;
+}
+
+h1 {
+    .title {
+        font-size: 2em;
+        margin-top: 50%;
+        text-align: left;
+    }
+}
+h2 {
+    .author {
+        font-size: 1.3em;
+    }
+}
+h3 {
+    .date {}
+}
+
+
+/**
+ * Page and Sections Layout
+ */
+.odd {
+
+}
+.even {
+
+}
+
+/**
+ * Helper classes
+ */
+.alignleft {
+    text-align: left;
+}
+.alignright {
+    text-align: right;
+}
+.aligncenter {
+    text-align: center;
+}
+
+.hidden {
+    visibility: hidden;
+}

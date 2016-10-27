@@ -1,0 +1,132 @@
+/*
+E-book Title:       BOOK_TITLE
+E-book URI:         BOOK_REPO
+E-book Editor URI:  EDITOR_REPO
+E-book Description: BOOK_DESCRIPTION
+E-book Version:     0.1.0
+E-book License:     LICENSE
+E-book License URI: LEGALCODE
+Code License:       CODE_LICENSE
+Code License URI:   CODE_LICENSE_URI
+
+This E-book is licensed under a LICENSE
+All the source code needed to produce and publish the E-book is licensed under a CODE_LICENSE
+
+All eventually included fonts and webfonts are taken from GoogleFonts and distributed
+under the terms of the SIL OFL 1.1 license, http://scripts.sil.org/OFL
+Font collection:
+*/
+
+/*--------------------------------------------------------------
+TABLE OF CONTENTS:
+----------------------------------------------------------------
+# 1.0 - Importing Partials
+    ## 1.1 - Sass colors
+    ## 1.2 - Sass variables
+    ## 1.3 - Sass functions
+    ## 1.4 - Typography
+    ## 1.5 - Mixins
+# 2.0 - Base Layout
+    ## 2.1 - Header
+    ## 2.2 - Table of Contents
+    ## 2.3 - Images
+    ## 2.4 - Tables
+    ## 2.5 - Foot Notes
+    ## 2.6 - Footer
+--------------------------------------------------------------*/
+
+// -----------------------------------------------------------------------------
+// 1.0 Importing Partials
+//
+// These files are needed at the beginning so that we establish all
+// our mixins, functions, and variables that we'll be using across
+// the whole project.
+//
+// @TODO complete all sassdoc for functions and
+//       review groups structure in grunt/sassdoc.js
+// @TODO reset all styles to bare minimum and helpers only
+// @TODO try to switch from JS to CSS for full page background image,
+//       via vh and vw units by 100% and background contain
+// @TODO split files for each single sections, add them in a new scss/sections folder
+// @TODO reference all scss file structure with folder-specific index files, which
+//       only will contain @import for all files inside the folder; this way it will
+//       be easier to include or exclude any single module by just commenting it out
+// ----------------------------------------------------------------------------------
+
+// 1.1 - Sass Colors
+// ---------------------------------
+@import 'tools/colors';
+
+// 1.2 - Sass variables
+// ---------------------------------
+@import 'tools/variables';
+
+// 1.3 - Sass functions
+// ---------------------------------
+@import 'tools/functions';
+
+// 1.4 - Setup Typography
+// ---------------------------------
+@import 'tools/typography';
+
+// 1.5 - Import all mixins
+// ---------------------------------
+@import 'tools/mixins';
+
+
+// -----------------------------------------------------------------------------
+// 3.0 - Base Layout
+//
+// All Page and Containers layout styles are defined here.
+// Containers and semantic elements are defines following a visual
+// page tree as guide, thus defining main containers and nesting
+// sub-component styles, and footnotes and footer at the end.
+// Included here are also some helper classes.
+//
+// -----------------------------------------------------------------------------
+@import 'layout';
+
+// 3.1 - Page Header
+// ---------------------------------
+@import 'header';
+
+// 3.2 - Table of contents
+// ---------------------------------
+@import 'toc';
+
+// 3.3 - Images
+// ---------------------------------
+@import 'images';
+
+// 3.4 - Tables
+// ---------------------------------
+@import 'tables';
+
+// 3.5 - Foot Notes
+// ---------------------------------
+@import 'footnotes';
+
+// 3.5 - Footer
+// ---------------------------------
+@import 'footer';
+
+
+/**
+ * Sample CSS epub mediaqueries
+ *
+ *
+ * @type {[type]}
+ */
+/*
+
+/*
+@media all and (orientation:portrait) {
+p { font-family: serif; }
+}
+
+
+@media all and (orientation:landscape) {
+p { font-family: sans-serif; }
+
+}
+*/
