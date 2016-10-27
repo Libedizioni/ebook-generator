@@ -82,6 +82,9 @@ node_modules/*
 # ignore build folder
 build
 build/*
+# ignore filters until FIXME needed
+filters
+filters/*
 
 # ignore compiled expanded style.css file but track .scss files
 *.css
