@@ -62,6 +62,8 @@ module.exports = {
 			'BOOKNAME=<%= book.name %>',
 			'BUILD=<%= book.path.build %>',
 			'TOC_DEPTH=<%= book.tocdepth %>',
+			'TITLE=<%= book.booktitle %>',
+			'INTRO=$( find "<%= book.path.intro %>" -maxdepth 1 -type f -name "*.md" -printf "%p " )',
 			'SOURCE=$( find "<%= book.path.src %>" -type f -name "*.md" -printf "%p " )',
 			'TEMPLATE_PDF=<%= book.templates.pdf %>',
 			// Source and run build-pdf.sh
