@@ -42,7 +42,11 @@ module.exports = {
 	},
 	css: {
 		files: ['inc/scss/**/*.scss'],
-		tasks: ['styles'],
+		tasks: [
+			'styles',
+			'shell:build_epub',
+			'shell:build_html'
+		],
 		options: {
 			spawn: false,
 			livereload: true,
@@ -54,8 +58,7 @@ module.exports = {
 		tasks: ['imageminnewer'],
 		options: {
 			spawn: false,
-			livereload: true,
-			debounceDelay: 250
+			livereload: true
 		},
-	},
+	}
 };
