@@ -4,9 +4,37 @@
  * @link https://github.com/gruntjs/grunt-contrib-watch
  */
 module.exports = {
-	docx: {
-		files: ['src/docx/*.docx'],
-		tasks: ['shell:prepare_markdown', 'shell:process_markdown_edits'],
+	pdf: {
+		files: [
+			'templates/pdf/*.beamer',
+			'templates/pdf/*.context',
+			'templates/pdf/*.latex',
+			'templates/pdf/*.tex'
+		],
+		tasks: ['shell:build_pdf'],
+		options: {
+			spawn: false,
+			livereload: true,
+		},
+	},
+	html: {
+		files: [
+			'inc/scss/**/*.scss',
+			'templates/html/*.html',
+			'templates/html/*.html5'
+		],
+		tasks: ['shell:build_html'],
+		options: {
+			spawn: false,
+			livereload: true,
+		},
+	},
+	epub: {
+		files: [
+			'templates/pdf/*.epub',
+			'templates/pdf/*.epub3'
+		],
+		tasks: ['shell:build_epub'],
 		options: {
 			spawn: false,
 			livereload: true,
