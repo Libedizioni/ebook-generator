@@ -39,31 +39,23 @@
 # --------------------------------------- #
 # build single ebook formats
 # --------------------------------------- #
-'build_epub':
+'single_epub':
 - 'shell:prepare_markdown'
 - 'shell:process_markdown_edits'
 - 'shell:build_epub'
-'build_html':
+'single_html':
 - 'shell:prepare_markdown'
 - 'shell:process_markdown_edits'
 - 'shell:build_html'
-'build_pdf':
+'single_pdf':
 - 'shell:prepare_markdown'
 - 'shell:process_markdown_edits'
 - 'shell:build_pdf'
-# --------------------------------------- #
-# build all ebook formats
-# --------------------------------------- #
-'build_ebook':
-- 'shell:prepare_markdown'
-- 'shell:process_markdown_edits'
-- 'shell:build_epub'
-- 'shell:build_html'
-- 'shell:build_pdf'
 
 
+# ------------------------------------------------- #
 # Scaffold a new ebook project with ebook-generator
-# -------------------------------------------------
+# ------------------------------------------------- #
 'scaffold_new_ebook':
 - 'shell:mkdir_scaffold_ebook'
 - 'copy:scaffold'
@@ -76,29 +68,27 @@
 
 
 # --------------------------- #
-#   PRE-BUILD & BUILD TASKS   #
+#   COMPILE EBOOK ASSETS &    #
+#   COMPILE EBOOK SOURCES &   #
+#   BUILD EBOOK FORMATS       #
 # --------------------------- #
-'pre_build':
+'assets':
 - 'styles'
 - 'imagemin_newer'
 - 'resize_images'
+'sources':
 - 'shell:test_dependencies'
 - 'shell:prepare_markdown'
 - 'shell:process_markdown_edits'
 'build':
-- 'styles'
-- 'imagemin_newer'
-- 'resize_images'
-- 'shell:test_dependencies'
-- 'shell:prepare_markdown'
-- 'shell:process_markdown_edits'
 - 'shell:build_epub'
 - 'shell:build_html'
 - 'shell:build_pdf'
 
-
 # --------------------------- #
-#   DEFAULT TASK              #
+#   DEFAULT TASK
 # --------------------------- #
 default:
-- 'styles, resize_images, build_ebook'
+- 'assets'
+- 'sources'
+- 'build'

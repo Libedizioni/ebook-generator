@@ -20,6 +20,7 @@ module.exports = {
 				'inc/images',
 				'!inc/*.css',
 				'!inc/*.map',
+				'inc/scss/.sass-lint.yml',
 				'!src/docx/**',
 				'src/docx',
 				'!src/intro/*.md',

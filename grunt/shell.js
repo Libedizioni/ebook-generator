@@ -62,6 +62,8 @@ module.exports = {
 			'BOOKNAME=<%= book.name %>',
 			'BUILD=<%= book.path.build %>',
 			'TOC_DEPTH=<%= book.tocdepth %>',
+			'TITLE=<%= book.booktitle %>',
+			'INTRO=$( find "<%= book.path.intro %>" -maxdepth 1 -type f -name "*.md" -printf "%p " )',
 			'SOURCE=$( find "<%= book.path.src %>" -type f -name "*.md" -printf "%p " )',
 			'TEMPLATE_PDF=<%= book.templates.pdf %>',
 			// Source and run build-pdf.sh
@@ -179,9 +181,9 @@ module.exports = {
 			'git init',
 			'git config user.name "<%= book.repository.user.name %>"',
 			'git config user.email "<%= book.repository.user.email %>"',
-			'git remote add origin <%= book.repository.url %>.<%= book.repository.type %>',
+			'git remote add origin <%= book.repository.remote %>.<%= book.repository.type %>',
 			'git add .',
-			'git commit -m "Init <%= book.name %> repository."'
+			'git commit -m "Init \"<%= book.name %>\" repository."'
 		].join(' && ')
 	},
 

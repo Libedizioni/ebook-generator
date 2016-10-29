@@ -11,6 +11,12 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
 
 ***
 
+**v0.1.1**
+
+- fix grunt aliases & tasks
+- update build pdf script & task
+- add git remote to book-config
+
 **v0.1.0**
 
 - initial working version
