@@ -11,6 +11,11 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
 
 ***
 
+**v0.2.0**
+
+- update README.md contents
+- add links to docs at repository's Wiki
+
 **v0.1.2**
 
 - fix assets grunt aliases ordering
