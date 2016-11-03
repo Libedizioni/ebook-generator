@@ -11,6 +11,10 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
 
 ***
 
+**v0.2.1**
+
+- fix README.md formatting issue
+
 **v0.2.0**
 
 - update README.md contents
