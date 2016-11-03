@@ -11,6 +11,11 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
 
 ***
 
+**v0.1.2**
+
+- fix assets grunt aliases ordering
+- update and add new docx tags
+
 **v0.1.1**
 
 - fix grunt aliases & tasks
