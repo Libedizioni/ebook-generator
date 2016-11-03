@@ -38,6 +38,4 @@ It is also equipped with a starter set of [**Pandoc**](http://pandoc.org/) templ
 
 ---
 
-<h6 style="text-align:center;font-size:small;">
-Made with :heart: by **[Codice Ovvio](http://github.com/codiceovvio)**
-</h6>
+###### Made with :heart: by [**Codice Ovvio**](http://github.com/codiceovvio)
