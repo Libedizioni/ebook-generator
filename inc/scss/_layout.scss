@@ -21,10 +21,12 @@ p {
     // word-break: break-word;
     // word-wrap: break-word;
 }
+
 p + p {
     margin-top: 0;
     text-indent: 1.3em;
 }
+
 hr {
     visibility: hidden;
 }
@@ -50,11 +52,13 @@ h1 {
         text-align: left;
     }
 }
+
 h2 {
     .author {
         font-size: 1.3em;
     }
 }
+
 h3 {
     .date {}
 }
@@ -66,8 +70,13 @@ h3 {
 .odd {
 
 }
+
 .even {
 
+}
+
+.breakpage {
+    page-break-before: always;
 }
 
 /**
@@ -76,9 +85,11 @@ h3 {
 .alignleft {
     text-align: left;
 }
+
 .alignright {
     text-align: right;
 }
+
 .aligncenter {
     text-align: center;
 }
