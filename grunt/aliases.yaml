@@ -74,8 +74,8 @@
 # --------------------------- #
 'assets':
 - 'styles'
-- 'imagemin_newer'
 - 'resize_images'
+- 'imagemin_newer'
 'sources':
 - 'shell:test_dependencies'
 - 'shell:prepare_markdown'

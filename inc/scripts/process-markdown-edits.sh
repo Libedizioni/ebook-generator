@@ -22,15 +22,31 @@ process_markdown_edits() {
             # process heading attributes
             sed -i 's/\\#/#/g' "$SELECTED"
             # process newlines
-            sed -i 's/{.NEWLINE}/\\/g' "$SELECTED"
+            sed -i 's/{+NEWLINE}/\\/g' "$SELECTED"
+            # process page breaks
+            sed -i 's/{+NEWPAGE}/\\newpage\n\n<div class="breakpage"><\/div>\n/g' "$SELECTED"
+            # process section align classes
+            sed -i 's/{+LEFT}/<div class="alignleft">/g' "$SELECTED"
+            sed -i 's/{+CENTER}/<div class="aligncenter">/g' "$SELECTED"
+            sed -i 's/{+RIGHT}/<div class="alignright">/g' "$SELECTED"
+            sed -i -e 's/{-LEFT}\|{-CENTER}\|{-RIGHT}/<\/p>\n/g' "$SELECTED"
             # process paragraph align classes
-            sed -i '/{.LEFT}/{n;s/.*/<\/p>\n/}' "$SELECTED"
-            sed -i '/{.CENTER}/{n;s/.*/<\/p>\n/}' "$SELECTED"
-            sed -i '/{.RIGHT}/{n;s/.*/<\/p>\n/}' "$SELECTED"
-            sed -i 's/{.LEFT}/<p class="alignleft">\n/g' "$SELECTED"
-            sed -i 's/{.CENTER}/<p class="aligncenter">\n/g' "$SELECTED"
-            sed -i 's/{.RIGHT}/<p class="alignright">\n/g' "$SELECTED"
-    done
+            sed -i '/{:LEFT}/{n;s/.*/<\/p>\n/}' "$SELECTED"
+            sed -i '/{:CENTER}/{n;s/.*/<\/p>\n/}' "$SELECTED"
+            sed -i '/{:RIGHT}/{n;s/.*/<\/p>\n/}' "$SELECTED"
+            sed -i 's/{:LEFT}/<p class="alignleft">/g' "$SELECTED"
+            sed -i 's/{:CENTER}/<p class="aligncenter">/g' "$SELECTED"
+            sed -i 's/{:RIGHT}/<p class="alignright">/g' "$SELECTED"
+            # process blockquote and cite tags
+            sed -i 's/{+QUOTE}/>/g' "$SELECTED"
+            sed -i 's/{+CITE}/<p class="small">/g' "$SELECTED"
+            # process text sizes
+            sed -i 's/{+SMALLER}/<p class="smaller">/g' "$SELECTED"
+            sed -i 's/{+SMALL}/<p class="small">/g' "$SELECTED"
+            sed -i 's/{+BIG}/<p class="big">/g' "$SELECTED"
+            sed -i 's/{+BIGGER}/<p class="bigger">/g' "$SELECTED"
+
+        done
 
 }
 

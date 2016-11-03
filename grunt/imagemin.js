@@ -8,7 +8,10 @@ module.exports = {
 		files: [{
 			expand: true,
 			cwd: '<%= pkg.dir.images %>',
-			src: ['**/*.{png,jpg,gif}'],
+			src: [
+				'**/*.{png,jpg,gif}',
+				'cover.jpg'
+			],
 			dest: '<%= pkg.dir.images %>',
 		}]
 	}
