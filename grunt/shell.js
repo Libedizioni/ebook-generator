@@ -169,7 +169,7 @@ module.exports = {
 			'echo "" >> "README.md"',
 			'echo "---" >> "README.md"',
 			'echo "" >> "README.md"',
-			'echo "###### _This ebook was generated with [Ebook Generator](<%= pkg.repository.url %>) - made with :heart: by [<%= pkg.author.name %>](<%= pkg.author.url %>) | [Libe Edizioni](<%= pkg.author.url %>)._" >> "README.md"',
+			'echo "###### _This ebook was generated with [Ebook Generator](<%= pkg.repository.url %>) - made with :heart: by [<%= pkg.author.name %>](<%= pkg.author.url %>) | [<%= book.publisher.name %>](<%= book.publisher.repository %>)._" >> "README.md"',
 			'echo "" >> "README.md"'
 		].join(' && ')
 	},
