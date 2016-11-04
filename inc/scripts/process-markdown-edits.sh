@@ -21,15 +21,35 @@ process_markdown_edits() {
             echo "[+] now processing " "$SELECTED"
             # process heading attributes
             sed -i 's/\\#/#/g' "$SELECTED"
+            # -------------------------- #
+            #     Document Structure     #
+            # -------------------------- #
             # process newlines
             sed -i 's/{+NEWLINE}/\\/g' "$SELECTED"
             # process page breaks
             sed -i 's/{+NEWPAGE}/\\newpage\n\n<div class="breakpage"><\/div>\n/g' "$SELECTED"
-            # process section align classes
+            # process paragraph indent
+            sed -i '/{+TAB}/{n;s/.*/<\/p>\n/}' "$SELECTED"
+            sed -i '/{-TAB}/{n;s/.*/<\/p>\n/}' "$SELECTED"
+            sed -i 's/{+TAB}/<p class="linepush">/g' "$SELECTED"
+            sed -i 's/{-TAB}/<p class="linepull">/g' "$SELECTED"
+            # -------------------------- #
+            #    Sections and/or Divs    #
+            # -------------------------- #
+            # process section/div align classes
             sed -i 's/{+LEFT}/<div class="alignleft">/g' "$SELECTED"
             sed -i 's/{+CENTER}/<div class="aligncenter">/g' "$SELECTED"
             sed -i 's/{+RIGHT}/<div class="alignright">/g' "$SELECTED"
-            sed -i -e 's/{-LEFT}\|{-CENTER}\|{-RIGHT}/<\/p>\n/g' "$SELECTED"
+            sed -i -e 's/{-LEFT}\|{-CENTER}\|{-RIGHT}/<\/div>\n/g' "$SELECTED"
+            # process section/div text dimensions
+            sed -i 's/{+SMALLER}/<div class="smaller">/g' "$SELECTED"
+            sed -i 's/{+SMALL}/<div class="small">/g' "$SELECTED"
+            sed -i 's/{+BIG}/<div class="big">/g' "$SELECTED"
+            sed -i 's/{+BIGGER}/<div class="bigger">/g' "$SELECTED"
+            sed -i -e 's/{-SMALLER}\|{-SMALL}\|{-BIG}\|{-BIGGER}/<\/div>\n/g' "$SELECTED"
+            # -------------------------- #
+            #     Single Paragraphs      #
+            # -------------------------- #
             # process paragraph align classes
             sed -i '/{:LEFT}/{n;s/.*/<\/p>\n/}' "$SELECTED"
             sed -i '/{:CENTER}/{n;s/.*/<\/p>\n/}' "$SELECTED"
@@ -38,13 +58,18 @@ process_markdown_edits() {
             sed -i 's/{:CENTER}/<p class="aligncenter">/g' "$SELECTED"
             sed -i 's/{:RIGHT}/<p class="alignright">/g' "$SELECTED"
             # process blockquote and cite tags
-            sed -i 's/{+QUOTE}/>/g' "$SELECTED"
-            sed -i 's/{+CITE}/<p class="small">/g' "$SELECTED"
+            sed -i 's/{:QUOTE}/>/g' "$SELECTED"
+            sed -i '/{:CITE}/{n;s/.*/<\/p>\n/}' "$SELECTED"
+            sed -i 's/{:CITE}/<p class="small">/g' "$SELECTED"
             # process text sizes
-            sed -i 's/{+SMALLER}/<p class="smaller">/g' "$SELECTED"
-            sed -i 's/{+SMALL}/<p class="small">/g' "$SELECTED"
-            sed -i 's/{+BIG}/<p class="big">/g' "$SELECTED"
-            sed -i 's/{+BIGGER}/<p class="bigger">/g' "$SELECTED"
+            sed -i '/{:SMALLER}/{n;s/.*/<\/p>\n/}' "$SELECTED"
+            sed -i '/{:SMALL}/{n;s/.*/<\/p>\n/}' "$SELECTED"
+            sed -i '/{:BIG}/{n;s/.*/<\/p>\n/}' "$SELECTED"
+            sed -i '/{:BIGGER}/{n;s/.*/<\/p>\n/}' "$SELECTED"
+            sed -i 's/{:SMALLER}/<p class="smaller">/g' "$SELECTED"
+            sed -i 's/{:SMALL}/<p class="small">/g' "$SELECTED"
+            sed -i 's/{:BIG}/<p class="big">/g' "$SELECTED"
+            sed -i 's/{:BIGGER}/<p class="bigger">/g' "$SELECTED"
 
         done
 
