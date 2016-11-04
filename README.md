@@ -1,7 +1,6 @@
 # Ebook Generator
 
-_**Ebook Generator is a simple starter workflow to edit and generate an ebook in different output formats, starting from a set of one or more .docx files.**_
-<br>
+_**Ebook Generator is a simple starter workflow to edit and generate ebooks in different output formats, converted from a set of one or more source .docx files.**_
 
 
 It uses [**Grunt**](http://gruntjs.com/) to manage a set of different common tasks performed to edit and format the ebook prior to generate the final version, and it uses [**Sass**](http://sass-lang.com/) preprocessor to keep all CSS modules separated with a clean structure, and it ships a basic set of well commented .scss files ready to start-off.
@@ -17,7 +16,7 @@ It is also equipped with a starter set of [**Pandoc**](http://pandoc.org/) templ
     - Granular control of metadata
     - Book configuration json file
 - Automatic media and fonts parsing
-- Automagic new ebook scaffold
+- Automatic new ebook scaffold
 
 ### Output formats:
 

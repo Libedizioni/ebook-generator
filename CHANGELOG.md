@@ -11,6 +11,13 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
 
 ***
 
+**v0.2.2**
+
+- fix small issues in README.md
+- add a set of docx tags according to those [listed in Wiki](https://github.com/Libedizioni/ebook-generator/wiki/Docx-Formatting-Shortcuts.md) to process-markdown-edits script
+- fix docx tags for intro .txt files
+- add minimal text-formatting css styles
+
 **v0.2.1**
 
 - fix README.md formatting issue
