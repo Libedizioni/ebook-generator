@@ -176,6 +176,8 @@ module.exports = {
 	init_book_git_repo: {
 		command: [
 			'cd ../<%= book.name %>',
+            'grep -rl "ignore book-config used" .gitignore | xargs sed -i "/ignore book-config used/d"',
+            'grep -rl "book-config.json" .gitignore | xargs sed -i "/book-config.json/d"',
 			'rm CHANGELOG.md',
 			'touch CHANGELOG.md',
 			'git init',
