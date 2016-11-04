@@ -1,24 +1,3 @@
-////
-/// Minimal Framework Mixins Stylesheet
-/// -----------------------------------
-/// In this stylesheet we define the following mixins:
-/// - Better Media Queries mixin
-///     - @include mq( $size )
-///     - @include retina()
-///     - @include print()
-/// - Css3 Gradients mixin
-///     - @include css-gradient( #dfdfdf, #f8f8f8 );
-///
-/// @author    Codice Ovvio
-///
-/// Helpful resources:
-/// @link http://sachagreif.com/useful-sass-mixins/
-/// @link http://thesassway.com/intermediate/leveraging-sass-mixins-for-cleaner-code
-/// @link http://web-design-weekly.com/blog/2013/05/12/handy-sass-mixins/
-///
-////
-$mixins: '';
-
 /// Better Media Queries mixin
 /// Provides a quick shortcut to target `@media only screen and ( min-width: px )` on specified size as argument.
 /// Default media-queries implemented in stylesheet are:
