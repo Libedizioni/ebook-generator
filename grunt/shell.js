@@ -185,7 +185,7 @@ module.exports = {
 			'git config user.email "<%= book.repository.user.email %>"',
 			'git remote add origin <%= book.repository.remote %>.<%= book.repository.type %>',
 			'git add .',
-			'git commit -m "Init \"<%= book.name %>\" repository."'
+			'git commit -m "Init repository: \"<%= book.name %>\""'
 		].join(' && ')
 	},
 
