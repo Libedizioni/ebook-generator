@@ -35,7 +35,6 @@ hr {
 /**
  * Headings
  */
-
 h1,
 h2,
 h3,
@@ -61,6 +60,36 @@ h2 {
 
 h3 {
     .date {}
+}
+
+
+/**
+ * Text dimension controls
+ */
+.smaller {
+    font-size: .75em;
+}
+
+.small {
+    font-size: .87em;
+}
+
+.big {
+    font-size: 1.12em;
+}
+
+.bigger {
+    font-size: 1.25em;
+}
+
+
+/**
+ * Blockquotes and Citations formatting
+ */
+blockquote {
+    margin-left: 5%;
+    margin-right: 5%;
+    border-left: 2px solid $alfa_dark_blue;
 }
 
 
