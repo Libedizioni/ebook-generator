@@ -68,6 +68,7 @@ prepros.cfg
 !.editorconfig
 !.gitattributes
 !.gitignore
+!.gitmodules
 !.jscsrc
 !.sass-lint.yml
 !README.md
@@ -86,7 +87,8 @@ build/*
 # ignore filters until FIXME needed
 filters
 filters/*
-
 # ignore compiled expanded style.css file but track .scss files
 *.css
 *.css.map
+# ignore book-config used in scaffolding
+book-config.json
