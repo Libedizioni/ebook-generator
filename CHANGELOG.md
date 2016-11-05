@@ -11,10 +11,16 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
 
 ***
 
+**v0.2.3**
+
+- fix: cleanup .scss files & update version tags
+- update: simplify book scaffolding with book-config-sample instead of book-config.json
+- fix: correct files copy & better readme formatting
+
 **v0.2.2**
 
 - fix small issues in README.md
-- add a set of docx tags according to those [listed in Wiki](https://github.com/Libedizioni/ebook-generator/wiki/Docx-Formatting-Shortcuts.md) to process-markdown-edits script
+- add a set of docx tags according to those [listed in Wiki](https://github.com/Libedizioni/ebook-generator/wiki/Docx-Formatting-Shortcuts) to process-markdown-edits script
 - fix docx tags for intro .txt files
 - add minimal text-formatting css styles
 

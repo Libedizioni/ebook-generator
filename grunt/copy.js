@@ -25,7 +25,10 @@ module.exports = {
 				'src/docx',
 				'!src/intro/*.md',
 				'!src/*.md',
-				'!filters/**'
+				'!filters/**',
+				'!book-config*.json',
+				'!main-repo-package.json',
+				'book-config.json'
 			],
 			dest: '../<%= book.name %>/',
 		}],

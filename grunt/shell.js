@@ -153,29 +153,31 @@ module.exports = {
 			'touch README.md',
 			'echo "#<%= book.title %>" >> "README.md"',
 			'echo "##<%= book.author.name %> <%= book.author.surname %>" >> "README.md"',
-			'echo "_**<%= book.description %>**_" >> "README.md"',
+			'echo "_<%= book.description %>_" >> "README.md"',
 			'echo "" >> "README.md"',
 			'echo "---" >> "README.md"',
 			'echo "" >> "README.md"',
-			'echo "- **Translated by:** <%= book.translator.name %>" >> "README.md"',
-			'echo "- **Ebook design:** <%= book.editor.design %>" >> "README.md"',
-			'echo "- **Ebook layout:** <%= book.editor.layout %>" >> "README.md"',
-			'echo "- **Publisher:** <%= book.publisher.name %>" >> "README.md"',
-			'echo "- **ISBN:** <%= book.publisher.isbn %>" >> "README.md"',
+			'echo "- Translated by: **<%= book.translator.name %>**" >> "README.md"',
+			'echo "- Ebook design: **<%= book.editor.design %>**" >> "README.md"',
+			'echo "- Ebook layout: **<%= book.editor.layout %>**" >> "README.md"',
+			'echo "- Publisher: **<%= book.publisher.name %>**" >> "README.md"',
+			'echo "- ISBN: **<%= book.publisher.isbn %>**" >> "README.md"',
 			'echo "" >> "README.md"',
 			'echo "**©** _$(date +\"%Y\")_ | <%= book.publisher.copyright %> | [<%= book.license %>](<%= book.publisher.legalcode %>)" >> "README.md"',
 			'echo "" >> "README.md"',
-			'echo "_Original title: **<%= book.original.title %>** published by <%= book.original.publisher %> in <%= book.original.year %>_" >> "README.md"',
+			'echo "Original title: _**<%= book.original.title %>**_ published by _**<%= book.original.publisher %>**_ in _<%= book.original.year %>_" >> "README.md"',
 			'echo "" >> "README.md"',
 			'echo "---" >> "README.md"',
 			'echo "" >> "README.md"',
-			'echo "###### _This ebook was generated with [Ebook Generator](<%= pkg.repository.url %>) - made with :heart: by [<%= pkg.author.name %>](<%= pkg.author.url %>) | [Libe Edizioni](<%= pkg.author.url %>)._" >> "README.md"',
+			'echo "###### _This ebook was generated with [Ebook Generator](<%= pkg.repository.url %>) - by [<%= pkg.author.name %>](<%= pkg.author.url %>) | [<%= book.publisher.name %>](<%= book.publisher.repository %>)._" >> "README.md"',
 			'echo "" >> "README.md"'
 		].join(' && ')
 	},
 	init_book_git_repo: {
 		command: [
 			'cd ../<%= book.name %>',
+            'grep -rl "ignore book-config used" .gitignore | xargs sed -i "/ignore book-config used/d"',
+            'grep -rl "book-config.json" .gitignore | xargs sed -i "/book-config.json/d"',
 			'rm CHANGELOG.md',
 			'touch CHANGELOG.md',
 			'git init',
@@ -183,7 +185,7 @@ module.exports = {
 			'git config user.email "<%= book.repository.user.email %>"',
 			'git remote add origin <%= book.repository.remote %>.<%= book.repository.type %>',
 			'git add .',
-			'git commit -m "Init \"<%= book.name %>\" repository."'
+			'git commit -m "Init repository: \"<%= book.name %>\""'
 		].join(' && ')
 	},
 
