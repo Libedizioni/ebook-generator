@@ -91,4 +91,5 @@ filters/*
 *.css
 *.css.map
 # ignore book-config used in scaffolding
-book-config.json
+book-config*json
+!book-config-sample.json
