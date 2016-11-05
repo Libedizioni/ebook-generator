@@ -26,8 +26,9 @@ module.exports = {
 				'!src/intro/*.md',
 				'!src/*.md',
 				'!filters/**',
-				'!book-config-sample.json',
-				'!main-repo-package.json'
+				'!book-config*.json',
+				'!main-repo-package.json',
+				'book-config.json'
 			],
 			dest: '../<%= book.name %>/',
 		}],
