@@ -1,7 +1,9 @@
 # Ebook Generator
 
-_**Ebook Generator is a simple starter workflow to edit and generate ebooks in different output formats, converted from a set of one or more source .docx files.**_
+## This repository is still very alpha and currently under active development.
+#### Keep this in mind if you want to try it as it is now!
 
+_**Ebook Generator is a simple starter workflow to edit and generate ebooks in different output formats, converted from a set of one or more source .docx files.**_
 
 It uses [**Grunt**](http://gruntjs.com/) to manage a set of different common tasks performed to edit and format the ebook prior to generate the final version, and it uses [**Sass**](http://sass-lang.com/) preprocessor to keep all CSS modules separated with a clean structure, and it ships a basic set of well commented .scss files ready to start-off.
 
