@@ -41,44 +41,56 @@ h3,
 h4,
 h5,
 h6 {
-     font-family: $heading_font;
+    font-family: $heading_font;
 }
 
 h1 {
-    .title {
-        font-size: 2em;
-        margin-top: 50%;
-        text-align: left;
+    &.title {
+        font-size: 2.2em;
+        font-weight: 500;
+        margin-top: 2.2em;
+        text-align: center;
     }
 }
 
 h2 {
-    .author {
-        font-size: 1.3em;
+    &.author {
+        font-size: 1.2em;
+        font-weight: 400;
+        margin-top: 2.2em;
+        text-align: center;
     }
 }
 
 h3 {
-    .date {}
+    &.date {}
+}
+
+.hidden > h1 {
+    visibility: hidden;
 }
 
 
 /**
  * Text dimension controls
  */
-.smaller {
+.smaller,
+.smaller p {
     font-size: .75em;
 }
 
-.small {
+.small,
+.small p {
     font-size: .87em;
 }
 
-.big {
+.big,
+.big p {
     font-size: 1.12em;
 }
 
-.bigger {
+.bigger,
+.bigger p {
     font-size: 1.25em;
 }
 
@@ -87,10 +99,27 @@ h3 {
  * Blockquotes and Citations formatting
  */
 blockquote {
+    border-left: 2px solid $dark_gray;
+    color: $dark_gray;
+    font-style: italic;
     margin-left: 5%;
     margin-right: 5%;
-    border-left: 2px solid $alfa_dark_blue;
+    padding-left: 5%;
 }
+
+.citation {
+    font-family: $heading_font;
+    font-weight: 600;
+    font-size: .75em;
+    padding-left: 1em;
+    padding-top: .5em;
+
+    p {
+        color: $dark_gray;
+        text-indent: 0;
+    }
+}
+
 
 
 /**
@@ -123,6 +152,10 @@ blockquote {
     text-align: center;
 }
 
-.hidden {
-    visibility: hidden;
+.linepush {
+    text-indent: 1.3em;
+}
+
+.linepull {
+    text-indent: 0;
 }
