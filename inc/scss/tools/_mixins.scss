@@ -103,3 +103,72 @@
 		@content;
 	}
 }
+
+/// Font face
+/// ---------
+/// Shorthand to setup one or multiple @font-face declarations with just one-line
+///
+/// @param    { int }    $size    min-width in pixels
+/// @example  scss - Usage
+///           @include font-face( Josefin Sans, Josefin Sans-Regular );
+///           @include font-face( Josefin Sans, Josefin Sans-Italic, italic );
+///           @include font-face( Josefin Sans, Josefin Sans-SemiBoldItalic, italic, 600 );
+/// @example  css - CSS Output
+///           @font-face {
+///               font-family: "Josefin Sans";
+///               font-style: normal;
+///               font-weight: normal;
+///               src: url("fonts/Josefin Sans-Regular.ttf");
+///           }
+///           @font-face {
+///               font-family: "Josefin Sans";
+///               font-style: italic;
+///               font-weight: normal;
+///               src: url("fonts/Josefin Sans-Italic.ttf");
+///           }
+///           @font-face {
+///               font-family: "Josefin Sans";
+///               font-style: italic;
+///               font-weight: 600;
+///               src: url("fonts/Josefin Sans-SemiBoldItalic.ttf");
+///           }
+///
+/// @require  { @content } reference function
+/// @output   `media-query`
+/// @group    mixins
+@mixin font-face( $font-family-name, $file-name, $style: '', $weight: '' ) {
+    // $filepath: 'fonts/' + $file-name;
+    $filepath: $file-name;
+    @font-face {
+        font-family: '#{$font-family-name}';
+        @if $style != '' {
+            @if $style == 'normal'
+             or $style == 'italic'
+             or $style == 'oblique' {
+                font-style: #{$style};
+            }
+        } @else {
+            font-style: normal;
+        }
+        @if $weight != '' {
+            @if $weight == 100
+             or $weight == 200
+             or $weight == 300
+             or $weight == 400
+             or $weight == 500
+             or $weight == 600
+             or $weight == 700
+             or $weight == 800
+             or $weight == 900
+             or $weight == 'normal'
+             or $weight == 'bold'
+             or $weight == 'lighter'
+             or $weight == 'bolder' {
+                font-weight: #{$weight};
+            }
+        } @else {
+            font-weight: normal;
+        }
+        src: url( $filepath + '.ttf' );
+    }
+}
