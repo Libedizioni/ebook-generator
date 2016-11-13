@@ -11,6 +11,16 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
 
 ***
 
+**v0.3.0**
+
+- fix: refactor all .docx tags and markdown edits parsing to avoid clashes in tags syntax
+- fix: correct intro txt files
+
+**v0.2.4**
+
+- fix: add warning to readme
+- update: add search_replace_intro to "sources" grunt alias and some defaults to css
+
 **v0.2.3**
 
 - fix: cleanup .scss files & update version tags
