@@ -25,51 +25,30 @@ process_markdown_edits() {
             #     Document Structure     #
             # -------------------------- #
             # process newlines
-            sed -i 's/{+NEWLINE}/\\/g' "$SELECTED"
+            sed -i 's/{NEWLINE}/<br\/>/g' "$SELECTED"
             # process page breaks
-            sed -i 's/{+NEWPAGE}/\\newpage\n\n<div class="breakpage"><\/div>\n/g' "$SELECTED"
-            # process paragraph indent
-            sed -i '/{+TAB}/{n;s/.*/<\/p>\n/}' "$SELECTED"
-            sed -i '/{-TAB}/{n;s/.*/<\/p>\n/}' "$SELECTED"
-            sed -i 's/{+TAB}/<p class="linepush">/g' "$SELECTED"
-            sed -i 's/{-TAB}/<p class="linepull">/g' "$SELECTED"
-            # -------------------------- #
-            #    Sections and/or Divs    #
-            # -------------------------- #
-            # process section/div align classes
-            sed -i 's/{+LEFT}/<div class="alignleft">/g' "$SELECTED"
-            sed -i 's/{+CENTER}/<div class="aligncenter">/g' "$SELECTED"
-            sed -i 's/{+RIGHT}/<div class="alignright">/g' "$SELECTED"
-            sed -i -e 's/{-LEFT}\|{-CENTER}\|{-RIGHT}/<\/div>\n/g' "$SELECTED"
-            # process section/div text dimensions
-            sed -i 's/{+SMALLER}/<div class="smaller">/g' "$SELECTED"
-            sed -i 's/{+SMALL}/<div class="small">/g' "$SELECTED"
-            sed -i 's/{+BIG}/<div class="big">/g' "$SELECTED"
-            sed -i 's/{+BIGGER}/<div class="bigger">/g' "$SELECTED"
-            sed -i -e 's/{-SMALLER}\|{-SMALL}\|{-BIG}\|{-BIGGER}/<\/div>\n/g' "$SELECTED"
-            # -------------------------- #
-            #     Single Paragraphs      #
-            # -------------------------- #
-            # process paragraph align classes
-            sed -i '/{:LEFT}/{n;s/.*/<\/p>\n/}' "$SELECTED"
-            sed -i '/{:CENTER}/{n;s/.*/<\/p>\n/}' "$SELECTED"
-            sed -i '/{:RIGHT}/{n;s/.*/<\/p>\n/}' "$SELECTED"
-            sed -i 's/{:LEFT}/<p class="alignleft">/g' "$SELECTED"
-            sed -i 's/{:CENTER}/<p class="aligncenter">/g' "$SELECTED"
-            sed -i 's/{:RIGHT}/<p class="alignright">/g' "$SELECTED"
-            # process blockquote and cite tags
-            sed -i 's/{:QUOTE}/>/g' "$SELECTED"
-            sed -i '/{:CITE}/{n;s/.*/<\/p>\n/}' "$SELECTED"
-            sed -i 's/{:CITE}/<p class="small">/g' "$SELECTED"
-            # process text sizes
-            sed -i '/{:SMALLER}/{n;s/.*/<\/p>\n/}' "$SELECTED"
-            sed -i '/{:SMALL}/{n;s/.*/<\/p>\n/}' "$SELECTED"
-            sed -i '/{:BIG}/{n;s/.*/<\/p>\n/}' "$SELECTED"
-            sed -i '/{:BIGGER}/{n;s/.*/<\/p>\n/}' "$SELECTED"
-            sed -i 's/{:SMALLER}/<p class="smaller">/g' "$SELECTED"
-            sed -i 's/{:SMALL}/<p class="small">/g' "$SELECTED"
-            sed -i 's/{:BIG}/<p class="big">/g' "$SELECTED"
-            sed -i 's/{:BIGGER}/<p class="bigger">/g' "$SELECTED"
+            sed -i 's/{NEWPAGE}/\\newpage\n<div class="breakpage"><\/div>/g' "$SELECTED"
+            # process blockquote tag first, as it
+            # differs from other tags
+            sed -i 's/{QUOTE}/>/g' "$SELECTED"
+            # search replace closing divs
+            sed -i -e 's/{-LEFT-}\|{-CENTER-}\|{-RIGHT-}\|{-SMALLER-}\|{-SMALL-}\|{-BIG-}\|{-BIGGER-}\|{-CITE-}/<\/div>/g' "$SELECTED"
+            # search and replace css classes between {: :} delimiters
+            sed -i '/{:/,/:}/s/LEFT/alignleft/g; s/CENTER/aligncenter/g; s/RIGHT/alignright/g; s/CITE/citation/g; s/SMALLER/smaller/g; s/SMALL/small/g; s/BIG/big/g; s/BIGGER/bigger/g; s/+TAB/linepush/g; s/-TAB/linepull/g' "$SELECTED"
+            # search and replace css classes between {+ +} delimiters
+            sed -i '/{+/,/+}/s/LEFT/alignleft/g; s/CENTER/aligncenter/g; s/RIGHT/alignright/g; s/CITE/citation/g; s/SMALLER/smaller/g; s/SMALL/small/g; s/BIG/big/g; s/BIGGER/bigger/g' "$SELECTED"
+            # search for opening and closing {: :} and append
+            # a closing html paragraph tag to end of line
+            sed -i -e '/{:/{;/:}/s/$/<\/p>/;}' "$SELECTED"
+            # process blockquote tag last, as they
+            # differ from other tags
+            sed -i 's/{QUOTE}/>/g' "$SELECTED"
+            # search for opening and closing {: :} and replace
+            # with proper html paragraph opening tag
+            sed -i -e 's/{:/<p class="/g; s/:}/">/g' "$SELECTED"
+            # search for opening and closing {+ +} and replace
+            # with proper html div opening tag
+            sed -i -e 's/{+/<div class="/g; s/+}/">/g' "$SELECTED"
 
         done
 
