@@ -27,7 +27,7 @@ build_pdf() {
     # --variable documentclass="$LATEX_CLASS" \
     pandoc --toc --toc-depth="$TOC_DEPTH" --latex-engine=$LATEX_ENGINE \
     --template="$TEMPLATE_PDF" \
-    -o "$PDF" $INTRO $SOURCE
+    -o "$PDF" "$TITLE" $SOURCE
 }
 
 # report script info and execution time

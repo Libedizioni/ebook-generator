@@ -78,6 +78,9 @@
 - 'imagemin_newer'
 'sources':
 - 'shell:search_replace_intro'
+- 'shell:search_replace_metadata'
+- 'shell:search_replace_booktitle'
+- 'shell:search_replace_style'
 - 'shell:test_dependencies'
 - 'shell:prepare_markdown'
 - 'shell:process_markdown_edits'
