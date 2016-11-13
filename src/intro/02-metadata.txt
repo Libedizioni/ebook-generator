@@ -1,8 +1,8 @@
-{+CENTER}
-{:SMALL}[ La traduzione di quest’opera è stata realizzata con il contributo di Instituto basco Etxepare - Etxepare Euskal Institutua ]
-{-CENTER}
+#Metadata { .hidden }
 
-{+RIGHT}
+{:CENTER SMALL:}[ La traduzione di quest’opera è stata realizzata con il contributo di Instituto basco Etxepare - Etxepare Euskal Institutua ]
+
+{+RIGHT SMALL+}
 
 Titolo originale **ORIGINAL_TITLE**
 
@@ -18,6 +18,6 @@ BOOK_ISBN
 
 DATE COPYRIGHT
 
-{-RIGHT}
+{-RIGHT-}
 
-{+NEWPAGE}
+{NEWPAGE}

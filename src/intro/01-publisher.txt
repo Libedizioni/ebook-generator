@@ -1,15 +1,17 @@
-{+NEWLINE}
-{+NEWLINE}
-{+NEWLINE}
-{+NEWLINE}
-{+NEWLINE}
-{+NEWLINE}
-{+NEWLINE}
+#Publisher { .hidden }
 
-{+CENTER}
+{NEWLINE}
+{NEWLINE}
+{NEWLINE}
+{NEWLINE}
+{NEWLINE}
+{NEWLINE}
+{NEWLINE}
+
+{+CENTER+}
 **PUBLISHER**
 
 **[LINK](URL "Vai al sito di PUBLISHER")**
-{-CENTER}
+{-CENTER-}
 
-{+NEWPAGE}
+{NEWPAGE}
