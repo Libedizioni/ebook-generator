@@ -106,7 +106,7 @@ rules:
 
   property-units:
     - 1
-    - per-property: { width: ['rem', 'px'], height: ['rem', 'px'], margin: ['rem', 'px'], padding: ['rem', 'px'] }
+    - per-property: { width: ['rem', 'px', 'mm', 'pt'], height: ['rem', 'px', 'mm', 'pt'], margin: ['rem', 'px', 'mm', 'pt'], padding: ['rem', 'px', 'mm', 'pt'] }
 
   property-sort-order: 0
   quotes:

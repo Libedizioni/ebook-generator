@@ -2,14 +2,40 @@
 /// General elements layout
 ///
 
+
+// Include fonts with @font-face mixin
+// Usage: font-face( $font-family-name, $file-name, $style: '', $weight: '' )
+@include font-face( Raleway, Raleway-Regular );
+@include font-face( Raleway, Raleway-Italic, italic );
+@include font-face( Raleway, Raleway-SemiBold, normal, 600 );
+@include font-face( Raleway, Raleway-SemiBoldItalic, italic, 600 );
+@include font-face( Josefin Sans, JosefinSans-Regular );
+@include font-face( Josefin Sans, JosefinSans-Italic, italic );
+@include font-face( Josefin Sans, JosefinSans-SemiBold, normal, 600 );
+@include font-face( Josefin Sans, JosefinSans-SemiBoldItalic, italic, 600 );
+
 html,
 body {
     font-family: $base_font;
     font-size: $base_font_size;
+    line-height: $base_line_height;
     // margin: 5%;
     text-align: justify;
 }
 
+a {
+    color: $link_color;
+}
+
+b,
+strong {
+    font-weight: 600;
+}
+
+i,
+em {
+    font-style: italic;
+}
 
 p {
     font-family: $base_font;
@@ -20,6 +46,11 @@ p {
     // non-standart css for webkit
     // word-break: break-word;
     // word-wrap: break-word;
+}
+
+.compact p {
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 p + p {
@@ -47,7 +78,7 @@ h6 {
 h1 {
     &.title {
         font-size: 2.2em;
-        font-weight: 500;
+        font-weight: 600;
         margin-top: 2.2em;
         text-align: center;
     }
@@ -68,6 +99,7 @@ h3 {
 
 .hidden > h1 {
     visibility: hidden;
+    height: 0;
 }
 
 
@@ -99,7 +131,6 @@ h3 {
  * Blockquotes and Citations formatting
  */
 blockquote {
-    border-left: 2px solid $dark_gray;
     color: $dark_gray;
     font-style: italic;
     margin-left: 5%;
@@ -136,6 +167,20 @@ blockquote {
 .breakpage {
     page-break-before: always;
 }
+
+.table {
+    display: table;
+    width: 100%;
+    height: $page_height;
+    page-break-before: always;
+    page-break-after: always;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
 
 /**
  * Helper classes
