@@ -1,17 +1,11 @@
-#Publisher { .hidden }
+# PUBLISHER { #publisher .hidden - }
 
-{NEWLINE}
-{NEWLINE}
-{NEWLINE}
-{NEWLINE}
-{NEWLINE}
-{NEWLINE}
-{NEWLINE}
+{+MIDDLE+}
 
 {+CENTER+}
-**PUBLISHER**
+[!["Vai al sito di PUBLISHER"](LOGO)](URL)
 
-**[LINK](URL "Vai al sito di PUBLISHER")**
+[LINK](URL "Vai al sito di PUBLISHER")
 {-CENTER-}
 
-{NEWPAGE}
+{-MIDDLE-}

@@ -22,7 +22,8 @@ module.exports = {
 			// Setup Variables to pass to process-markdown-edits.sh
 			'SRC=<%= book.path.src %>',
 			// Source and run process-markdown-edits.sh
-			'. ./inc/scripts/process-markdown-edits.sh'
+			'. ./inc/scripts/process-markdown-edits.sh',
+			'cat $( find "<%= book.path.intro %>" -type f -name "*.md" -printf "%p " ) >> "<%= pkg.dir.inc %>/title.yaml"'
 		].join(' && ')
 	},
 	build_epub: {
@@ -35,7 +36,7 @@ module.exports = {
 			'SOURCE=$( find "<%= book.path.src %>" -maxdepth 1 -type f -name "*.md" -printf "%p " )',
 			'COVER_IMAGE=<%= book.cover %>',
 			'IMAGES=<%= book.images %>',
-			'FONTS=<%= book.fonts %>/*/*.ttf',
+			'FONTS=<%= book.fonts %>/*.ttf',
 			'CSS=<%= book.css %>',
 			'METADATA=<%= book.metadata %>',
 			'TITLE=<%= book.booktitle %>',
@@ -50,7 +51,8 @@ module.exports = {
 			'BOOKNAME=<%= book.name %>',
 			'BUILD=<%= book.path.build %>',
 			'TOC_DEPTH=<%= book.tocdepth %>',
-			'SOURCE=$( find "<%= book.path.src %>" -type f -name "*.md" -printf "%p " )',
+			'TITLE=<%= book.booktitle %>',
+			'SOURCE=$( find "<%= book.path.src %>" -maxdepth 1 -type f -name "*.md" -printf "%p " )',
 			'CSS=<%= book.css %>',
 			// Source and run build-html.sh
 			'. ./inc/scripts/build-html.sh'
@@ -79,27 +81,30 @@ module.exports = {
 	//         SCAFFOLD NEW BOOK         //
 	// --------------------------------- //
 	mkdir_scaffold_ebook: {
- 		command: 'mkdir -p ../<%= book.name %>'
- 	},
+		command: 'mkdir -p ../<%= book.name %>'
+	},
+	/*jshint multistr:true */
 	search_replace_intro: {
 		command: [
 			'cd ../<%= book.name %>',
 			'for file in <%= book.path.intro %>/*.txt ; do cp -f "$file" "${file%.txt}.md" ; done',
-			'sed -i "s|PUBLISHER|<%= book.publisher.name %>|g" "<%= book.path.intro %>/01-publisher.md"',
-			'sed -i "s|LINK|<%= book.publisher.link %>|g" "<%= book.path.intro %>/01-publisher.md"',
-			'sed -i "s|URL|<%= book.publisher.url %>|g" "<%= book.path.intro %>/01-publisher.md"',
-			'sed -i "s|ORIGINAL_TITLE|<%= book.original.title %>|g" "<%= book.path.intro %>/02-metadata.md"',
-			'sed -i "s|ORIGINAL_PUBLISHER|<%= book.original.publisher %>|g" "<%= book.path.intro %>/02-metadata.md"',
-			'sed -i "s|ORIGINAL_YEAR|<%= book.original.year %>|g" "<%= book.path.intro %>/02-metadata.md"',
-			'sed -i "s|TRANSLATOR|<%= book.translator.name %>|g" "<%= book.path.intro %>/02-metadata.md"',
-			'sed -i "s|COVER_BY|<%= book.editor.cover.name %>|g" "<%= book.path.intro %>/02-metadata.md"',
-			'sed -i "s|DESIGN|<%= book.editor.design %>|g" "<%= book.path.intro %>/02-metadata.md"',
-			'sed -i "s|LAYOUT|<%= book.editor.layout %>|g" "<%= book.path.intro %>/02-metadata.md"',
-			'sed -i "s|BOOK_ISBN|ISBN <%= book.publisher.isbn %>|g" "<%= book.path.intro %>/02-metadata.md"',
-			'sed -i "s|DATE|$(date +\"%Y\")|g" "<%= book.path.intro %>/02-metadata.md"',
-			'sed -i "s|COPYRIGHT|<%= book.publisher.copyright %>|g" "<%= book.path.intro %>/02-metadata.md"'
+			'sed -i "s|PUBLISHER|<%= book.publisher.name %>|g; \
+					 s|LINK|<%= book.publisher.link %>|g; \
+					 s|URL|<%= book.publisher.url %>|g; \
+					 s|LOGO|<%= book.publisher.logo %>|g; \
+					 s|ORIGINAL_TITLE|<%= book.original.title %>|g; \
+					 s|ORIGINAL_EDITION|<%= book.original.publisher %>|g; \
+					 s|ORIGINAL_YEAR|<%= book.original.year %>|g; \
+					 s|TRANSLATOR|<%= book.translator.name %>|g; \
+					 s|COVER_BY|<%= book.editor.cover.name %>|g; \
+					 s|DESIGN|<%= book.editor.design %>|g; \
+					 s|LAYOUT|<%= book.editor.layout %>|g; \
+					 s|BOOK_ISBN|ISBN <%= book.publisher.isbn %>|g; \
+					 s|DATE|$(date +\"%Y\")|g; \
+					 s|COPYRIGHT|<%= book.publisher.copyright %>|g" "<%= book.path.intro %>/"*.md'
 		].join(' && ')
 	},
+	/*jshint multistr:false */
 	search_replace_metadata: {
 		command: [
 			'cd ../<%= book.name %>',
@@ -129,8 +134,16 @@ module.exports = {
 	search_replace_booktitle: {
 		command: [
 			'cd ../<%= book.name %>',
+			'rm -f "<%= pkg.dir.inc %>/title.yaml"',
+			'echo "---" >> "<%= pkg.dir.inc %>/title.yaml"',
+			'echo "title: BOOK_TITLE" >> "<%= pkg.dir.inc %>/title.yaml"',
+			'echo "author: BOOK_AUTHOR" >> "<%= pkg.dir.inc %>/title.yaml"',
+			'echo "toc-title: TOC_TITLE" >> "<%= pkg.dir.inc %>/title.yaml"',
+			'echo "---" >> "<%= pkg.dir.inc %>/title.yaml"',
+			'echo "" >> "<%= pkg.dir.inc %>/title.yaml"',
 			'sed -i "s|BOOK_TITLE|<%= book.title %>|g" "<%= pkg.dir.inc %>/title.yaml"',
-			'sed -i "s|BOOK_AUTHOR|<%= book.author.name %> <%= book.author.surname %>|g" "<%= pkg.dir.inc %>/title.yaml"'
+			'sed -i "s|BOOK_AUTHOR|<%= book.author.name %> <%= book.author.surname %>|g" "<%= pkg.dir.inc %>/title.yaml"',
+			'sed -i "s|TOC_TITLE|<%= book.toctitle %>|g" "<%= pkg.dir.inc %>/title.yaml"'
 		].join(' && ')
 	},
 	search_replace_style: {
@@ -176,8 +189,8 @@ module.exports = {
 	init_book_git_repo: {
 		command: [
 			'cd ../<%= book.name %>',
-            'grep -rl "ignore book-config used" .gitignore | xargs sed -i "/ignore book-config used/d"',
-            'grep -rl "book-config.json" .gitignore | xargs sed -i "/book-config.json/d"',
+			'grep -rl "ignore book-config used" .gitignore | xargs sed -i "/ignore book-config used/d"',
+			'grep -rl "book-config.json" .gitignore | xargs sed -i "/book-config.json/d"',
 			'rm CHANGELOG.md',
 			'touch CHANGELOG.md',
 			'git init',

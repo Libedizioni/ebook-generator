@@ -2,14 +2,40 @@
 /// General elements layout
 ///
 
+
+// Include fonts with @font-face mixin
+// Usage: font-face( $font-family-name, $file-name, $style: '', $weight: '' )
+@include font-face( Raleway, Raleway-Regular );
+@include font-face( Raleway, Raleway-Italic, italic );
+@include font-face( Raleway, Raleway-SemiBold, normal, 600 );
+@include font-face( Raleway, Raleway-SemiBoldItalic, italic, 600 );
+@include font-face( Josefin Sans, JosefinSans-Regular );
+// @include font-face( Josefin Sans, JosefinSans-Italic, italic );
+@include font-face( Josefin Sans, JosefinSans-SemiBold, normal, 600 );
+// @include font-face( Josefin Sans, JosefinSans-SemiBoldItalic, italic, 600 );
+
 html,
 body {
     font-family: $base_font;
     font-size: $base_font_size;
+    line-height: $base_line_height;
     // margin: 5%;
     text-align: justify;
 }
 
+a {
+    color: $link_color;
+}
+
+b,
+strong {
+    font-weight: 600;
+}
+
+i,
+em {
+    font-style: italic;
+}
 
 p {
     font-family: $base_font;
@@ -20,6 +46,12 @@ p {
     // non-standart css for webkit
     // word-break: break-word;
     // word-wrap: break-word;
+}
+
+.compact,
+.compact p {
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 p + p {
@@ -47,7 +79,7 @@ h6 {
 h1 {
     &.title {
         font-size: 2.2em;
-        font-weight: 500;
+        font-weight: 600;
         margin-top: 2.2em;
         text-align: center;
     }
@@ -68,6 +100,7 @@ h3 {
 
 .hidden > h1 {
     visibility: hidden;
+    height: 0;
 }
 
 
@@ -76,7 +109,7 @@ h3 {
  */
 .smaller,
 .smaller p {
-    font-size: .75em;
+    font-size: .78em;
 }
 
 .small,
@@ -99,24 +132,26 @@ h3 {
  * Blockquotes and Citations formatting
  */
 blockquote {
-    border-left: 2px solid $dark_gray;
     color: $dark_gray;
     font-style: italic;
+    line-height: 1.25;
     margin-left: 5%;
     margin-right: 5%;
     padding-left: 5%;
 }
 
 .citation {
-    font-family: $heading_font;
     font-weight: 600;
     font-size: .75em;
-    padding-left: 1em;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-left: 5%;
     padding-top: .5em;
 
     p {
         color: $dark_gray;
         text-indent: 0;
+        line-height: 1.25;
     }
 }
 
@@ -133,9 +168,36 @@ blockquote {
 
 }
 
+/**
+ * Force or avoid a page break
+ */
 .breakpage {
     page-break-before: always;
 }
+
+.no-break {
+    page-break-inside: avoid;
+}
+
+/**
+ * Center a section vertically in a page
+ *
+ * this needs two elements to be a valid epub 2 decalration:
+ *   - a wrapper with display:table
+ *   - a container as a table-cell to center vertically
+ */
+.table {
+    display: table;
+    width: 100%;
+    height: $page_height;
+    // page-break-before: always;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
 
 /**
  * Helper classes

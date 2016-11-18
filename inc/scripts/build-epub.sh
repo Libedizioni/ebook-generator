@@ -26,15 +26,15 @@ build_epub() {
     pandoc --smart \
         --read=markdown \
         --write=epub \
-        --toc \
-        --toc-depth="$TOC_DEPTH" \
+        --self-contained \
+        --epub-chapter-level=1 \
         --template="$TEMPLATE_EPUB" \
         --extract-media="$IMAGES" \
         --epub-metadata="$METADATA" \
         --epub-embed-font="$FONTS" \
         --epub-cover-image="$COVER_IMAGE" \
         --epub-stylesheet="$CSS" \
-        -o "$EPUB" "$TITLE" $INTRO $SOURCE
+        -o "$EPUB" "$TITLE" $SOURCE
 }
 
 # report script info and execution time

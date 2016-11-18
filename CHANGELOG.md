@@ -11,6 +11,29 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
 
 ***
 
+**v0.4.0**
+
+- _New Features:_
+    - add TOC title to yaml metadata block
+    - add font-face sass mixin
+    - add rules for cover image
+
+- _Updates:_
+    - intro structure and output
+    - book-config-sample.json
+    - layout and images styles
+    - base font size to device's default
+    - grunt shell intro parsing task
+    - markdown process & epub build scripts
+    - all pandoc build commands in .sh scripts
+
+- _Bug fixes:_
+    - small issues in scss font-face mixin
+    - responsive_images task size & alias
+    - small scripts typos & various layout issues
+    - sass-lint to allow 'mm' & 'pt' unit lenghts
+    - intro section(s) with newly defined tags
+
 **v0.3.0**
 
 - fix: refactor all .docx tags and markdown edits parsing to avoid clashes in tags syntax

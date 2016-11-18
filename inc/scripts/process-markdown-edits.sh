@@ -32,11 +32,14 @@ process_markdown_edits() {
             # differs from other tags
             sed -i 's/{QUOTE}/>/g' "$SELECTED"
             # search replace closing divs
-            sed -i -e 's/{-LEFT-}\|{-CENTER-}\|{-RIGHT-}\|{-SMALLER-}\|{-SMALL-}\|{-BIG-}\|{-BIGGER-}\|{-CITE-}/<\/div>/g' "$SELECTED"
+            #sed -i -e 's/{-LEFT-}\|{-CENTER-}\|{-RIGHT-}\|{-MIDDLE-}\|{-SMALLER-}\|{-SMALL-}\|{-BIG-}\|{-BIGGER-}\|{-COMPACT-}\|{-CITE-}/<\/div>/g' "$SELECTED"
+            # search and replace vertically centered divs
+            sed -i -e '/{+MIDDLE/{;/+}/s/$/\n<div class="middle">/; s/MIDDLE/table/;}' "$SELECTED"
+            sed -i 's/{-MIDDLE-}/<\/div>\n<\/div>/g;' "$SELECTED"
             # search and replace css classes between {: :} delimiters
             sed -i '/{:/,/:}/s/LEFT/alignleft/g; s/CENTER/aligncenter/g; s/RIGHT/alignright/g; s/CITE/citation/g; s/SMALLER/smaller/g; s/SMALL/small/g; s/BIG/big/g; s/BIGGER/bigger/g; s/+TAB/linepush/g; s/-TAB/linepull/g' "$SELECTED"
             # search and replace css classes between {+ +} delimiters
-            sed -i '/{+/,/+}/s/LEFT/alignleft/g; s/CENTER/aligncenter/g; s/RIGHT/alignright/g; s/CITE/citation/g; s/SMALLER/smaller/g; s/SMALL/small/g; s/BIG/big/g; s/BIGGER/bigger/g' "$SELECTED"
+            sed -i '/{+/,/+}/s/LEFT/alignleft/g; s/CENTER/aligncenter/g; s/RIGHT/alignright/g; s/CITE/citation/g; s/SMALLER/smaller/g; s/SMALL/small/g; s/BIG/big/g; s/BIGGER/bigger/g; s/COMPACT/compact/g; s/BLOCK/no-break/g' "$SELECTED"
             # search for opening and closing {: :} and append
             # a closing html paragraph tag to end of line
             sed -i -e '/{:/{;/:}/s/$/<\/p>/;}' "$SELECTED"
@@ -49,6 +52,9 @@ process_markdown_edits() {
             # search for opening and closing {+ +} and replace
             # with proper html div opening tag
             sed -i -e 's/{+/<div class="/g; s/+}/">/g' "$SELECTED"
+            # search for opening and closing {- -} and replace
+            # with proper html div closing tag
+            sed -i -e 's/{-\(.*\)-}/<\/div>/g' "$SELECTED"
 
         done
 

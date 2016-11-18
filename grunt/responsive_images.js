@@ -20,7 +20,7 @@ module.exports = {
 				width: 1200,
 				aspectRatio: true
 			}, {
-				width: 1600,
+				width: 1400,
 				aspectRatio: true
 			}],
 			engine: 'im',

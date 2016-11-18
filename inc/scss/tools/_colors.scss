@@ -38,7 +38,7 @@ $orange: #ffa500;
 /// - red
 /// @type String
 /// @group colors_peace
-$red: #f00;
+$red: #d41118;
 
 /// - black
 /// @type String
@@ -98,7 +98,7 @@ $footer_text_color: '';
 
 /// Links
 /// @type String
-$link_color:        $azure;
+$link_color:        $red;
 $link_hover:        adjust-hue( darken( $link_color, 9% ), 3% );
 $link_focus:        darken( desaturate( adjust-hue( $link_color, 2% ), 23% ), 19% );
 

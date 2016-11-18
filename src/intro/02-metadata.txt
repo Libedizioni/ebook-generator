@@ -1,23 +1,34 @@
-#Metadata { .hidden }
+# { #metadati .hidden - }
 
-{:CENTER SMALL:}[ La traduzione di quest’opera è stata realizzata con il contributo di Instituto basco Etxepare - Etxepare Euskal Institutua ]
+{NEWLINE}
 
-{+RIGHT SMALL+}
 
-Titolo originale **ORIGINAL_TITLE**
+{+SMALL+}
 
-Editoriale originale **ORIGINAL_PUBLISHER, ORIGINAL_YEAR**
+{+COMPACT RIGHT+}
 
-Traduzione **TRANSLATOR**
+© ORIGINAL_YEAR - **ORIGINAL_EDITION**
 
-Immagine della copertina **COVER_BY**
+Titolo originale: **ORIGINAL_TITLE**
 
-Disegno e impaginazione **DESIGN, LAYOUT**
+___
+
+©  DATE - **PUBLISHER**
+
+Traduzione: **TRANSLATOR**
+
+___
+
+Immagine di copertina: **COVER_BY**
+
+Disegno e impaginazione: **DESIGN, LAYOUT**
+
+___
+
+COPYRIGHT
 
 BOOK_ISBN
 
-DATE COPYRIGHT
+{-COMPACT RIGHT-}
 
-{-RIGHT-}
-
-{NEWPAGE}
+{-SMALL-}

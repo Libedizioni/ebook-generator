@@ -13,13 +13,13 @@
 /// @access public
 /// @type Length
 /// @group typography
-$base_font_size: 24px !global;
+$base_font_size: 1em !global;
 
 /// Default base line-height
 /// @access public
 /// @type Length
 /// @group typography
-$base_line_height: 1.625 !global;
+$base_line_height: 1.4 !global;
 
 /// Default computed baseline
 ///
@@ -29,3 +29,13 @@ $base_line_height: 1.625 !global;
 /// @type Length
 /// @group typography
 $baseline: ( $base_font_size * $base_line_height ) !global;
+
+
+/// Default page dimensions
+///
+/// default page dimensions set for Libe books
+/// @access public
+/// @type lenght
+/// @group typography
+$page_width: 120mm !global;
+$page_height: 170mm !global;

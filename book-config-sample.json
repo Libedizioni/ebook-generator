@@ -26,6 +26,7 @@
     "name": "Publisher Editor Name",
     "link": "www.publisher-link.text",
     "url": "http://www.publisher-url.com",
+    "logo": "/full/path/to/publisher/logo/image",
     "repository": "https://github.com/PublisherName",
     "email": "publisher@email.com",
     "isbn": "xxxxxxxxxxxxx",
@@ -51,11 +52,12 @@
   },
 
 
-  "version": "0.2.3",
+  "version": "0.4.0",
   "cover": "inc/images/cover.jpg",
   "fonts": "inc/fonts",
   "images": "inc/images",
   "tocdepth": "3",
+  "toctitle": "Index title",
   "metadata": "inc/metadata.xml",
   "booktitle": "inc/title.yaml",
   "css": "inc/style.css",

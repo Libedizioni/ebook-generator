@@ -1,4 +1,5 @@
 ---
 title: BOOK_TITLE
 author: BOOK_AUTHOR
-...
+toc-title: TOC_TITLE
+---

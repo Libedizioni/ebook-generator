@@ -16,7 +16,7 @@ PDF="$BUILD/pdf/$BOOKNAME.pdf"
 
 # remove previous build version
 clean() {
-    rm -r "$PDF"
+    rm -f "$PDF"
 }
 
 # build pdf with pandoc
@@ -27,7 +27,7 @@ build_pdf() {
     # --variable documentclass="$LATEX_CLASS" \
     pandoc --toc --toc-depth="$TOC_DEPTH" --latex-engine=$LATEX_ENGINE \
     --template="$TEMPLATE_PDF" \
-    -o "$PDF" $INTRO $SOURCE
+    -o "$PDF" "$TITLE" $SOURCE
 }
 
 # report script info and execution time
