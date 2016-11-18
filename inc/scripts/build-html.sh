@@ -20,7 +20,7 @@ clean() {
 build_html() {
     echo "[+] now building html..."
     mkdir -p "$BUILD/html"
-    pandoc --toc --toc-depth="$TOC_DEPTH" --self-contained --css="$CSS" --to=html5 -o "$HTML" "$TITLE" $SOURCE
+    pandoc --toc --toc-depth="$TOC_DEPTH" --self-contained --css="$CSS" --to=html -o "$HTML" "$TITLE" $SOURCE
 }
 
 # report script info and execution time

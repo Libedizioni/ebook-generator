@@ -16,7 +16,7 @@ PDF="$BUILD/pdf/$BOOKNAME.pdf"
 
 # remove previous build version
 clean() {
-    rm -r "$PDF"
+    rm -f "$PDF"
 }
 
 # build pdf with pandoc
