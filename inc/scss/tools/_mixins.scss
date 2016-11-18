@@ -137,14 +137,14 @@
 /// @output   `media-query`
 /// @group    mixins
 @mixin font-face( $font-family-name, $file-name, $style: '', $weight: '' ) {
-    // $filepath: 'fonts/' + $file-name;
-    $filepath: $file-name;
+    // $filepath: 'fonts/' + $file-name + '.ttf';
+    $filepath: '"' + $file-name + '.ttf"';
     @font-face {
         font-family: '#{$font-family-name}';
         @if $style != '' {
             @if $style == 'normal'
              or $style == 'italic'
-             or $style == 'oblique' {
+             or $style == 'oblique' { // sass-lint:disable-line brace-style
                 font-style: #{$style};
             }
         } @else {
@@ -163,12 +163,12 @@
              or $weight == 'normal'
              or $weight == 'bold'
              or $weight == 'lighter'
-             or $weight == 'bolder' {
+             or $weight == 'bolder' { // sass-lint:disable-line brace-style
                 font-weight: #{$weight};
             }
         } @else {
             font-weight: normal;
         }
-        src: url( $filepath + '.ttf' );
+        src: url( $filepath );
     }
 }

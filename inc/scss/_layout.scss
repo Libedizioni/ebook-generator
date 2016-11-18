@@ -10,9 +10,9 @@
 @include font-face( Raleway, Raleway-SemiBold, normal, 600 );
 @include font-face( Raleway, Raleway-SemiBoldItalic, italic, 600 );
 @include font-face( Josefin Sans, JosefinSans-Regular );
-@include font-face( Josefin Sans, JosefinSans-Italic, italic );
+// @include font-face( Josefin Sans, JosefinSans-Italic, italic );
 @include font-face( Josefin Sans, JosefinSans-SemiBold, normal, 600 );
-@include font-face( Josefin Sans, JosefinSans-SemiBoldItalic, italic, 600 );
+// @include font-face( Josefin Sans, JosefinSans-SemiBoldItalic, italic, 600 );
 
 html,
 body {
@@ -48,6 +48,7 @@ p {
     // word-wrap: break-word;
 }
 
+.compact,
 .compact p {
     margin-top: 0;
     margin-bottom: 0;
@@ -108,7 +109,7 @@ h3 {
  */
 .smaller,
 .smaller p {
-    font-size: .75em;
+    font-size: .78em;
 }
 
 .small,
@@ -133,21 +134,24 @@ h3 {
 blockquote {
     color: $dark_gray;
     font-style: italic;
+    line-height: 1.25;
     margin-left: 5%;
     margin-right: 5%;
     padding-left: 5%;
 }
 
 .citation {
-    font-family: $heading_font;
     font-weight: 600;
     font-size: .75em;
-    padding-left: 1em;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-left: 5%;
     padding-top: .5em;
 
     p {
         color: $dark_gray;
         text-indent: 0;
+        line-height: 1.25;
     }
 }
 
@@ -164,16 +168,29 @@ blockquote {
 
 }
 
+/**
+ * Force or avoid a page break
+ */
 .breakpage {
     page-break-before: always;
 }
 
+.no-break {
+    page-break-inside: avoid;
+}
+
+/**
+ * Center a section vertically in a page
+ *
+ * this needs two elements to be a valid epub 2 decalration:
+ *   - a wrapper with display:table
+ *   - a container as a table-cell to center vertically
+ */
 .table {
     display: table;
     width: 100%;
     height: $page_height;
-    page-break-before: always;
-    page-break-after: always;
+    // page-break-before: always;
 }
 
 .middle {
