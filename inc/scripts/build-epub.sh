@@ -28,8 +28,6 @@ build_epub() {
         --write=epub \
         --self-contained \
         --epub-chapter-level=1 \
-        --toc \
-        --toc-depth="$TOC_DEPTH" \
         --template="$TEMPLATE_EPUB" \
         --extract-media="$IMAGES" \
         --epub-metadata="$METADATA" \

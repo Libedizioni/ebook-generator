@@ -74,7 +74,7 @@
 # --------------------------- #
 'assets':
 - 'styles'
-- 'resize_images'
+- 'responsive_images:cover'
 - 'imagemin_newer'
 'sources':
 - 'shell:search_replace_intro'
