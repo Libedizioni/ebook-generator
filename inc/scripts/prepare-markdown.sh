@@ -35,7 +35,7 @@ prepare_markdown() {
             --wrap=preserve \
             --extract-media='inc/images' \
             "$SELECTED" \
-            -o "$CONVERTED" "$SELECTED"
+            -o "$CONVERTED"
     done
     echo "[+] all files converted!"
 }
