@@ -39,7 +39,7 @@ process_markdown_edits() {
             # search and replace css classes between {: :} delimiters
             sed -i '/{:/,/:}/s/LEFT/alignleft/g; s/CENTER/aligncenter/g; s/RIGHT/alignright/g; s/CITE/citation/g; s/SMALLER/smaller/g; s/SMALL/small/g; s/BIG/big/g; s/BIGGER/bigger/g; s/+TAB/linepush/g; s/-TAB/linepull/g' "$SELECTED"
             # search and replace css classes between {+ +} delimiters
-            sed -i '/{+/,/+}/s/LEFT/alignleft/g; s/CENTER/aligncenter/g; s/RIGHT/alignright/g; s/CITE/citation/g; s/SMALLER/smaller/g; s/SMALL/small/g; s/BIG/big/g; s/BIGGER/bigger/g; s/COMPACT/compact/g; s/BLOCK/no-break/g' "$SELECTED"
+            sed -i '/{+/,/+}/s/LEFT/alignleft/g; s/CENTER/aligncenter/g; s/RIGHT/alignright/g; s/CITE/citation/g; s/SMALLER/smaller/g; s/SMALL/small/g; s/BIG/big/g; s/BIGGER/bigger/g; s/COMPACT/compact/g; s/BLOCK/no-break/g; s/MONO/monospace/g; s/DIALOGUE/dialogue/g' "$SELECTED"
             # search for opening and closing {: :} and append
             # a closing html paragraph tag to end of line
             sed -i -e '/{:/{;/:}/s/$/<\/p>/;}' "$SELECTED"

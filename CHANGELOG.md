@@ -11,6 +11,10 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
 
 ***
 
+**v0.4.1**
+- fix typo error in pandoc command
+- add monospace & dialogue TAGS and styles
+
 **v0.4.0**
 
 - _New Features:_
