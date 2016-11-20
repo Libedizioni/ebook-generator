@@ -10,9 +10,9 @@
 @include font-face( Raleway, Raleway-SemiBold, normal, 600 );
 @include font-face( Raleway, Raleway-SemiBoldItalic, italic, 600 );
 @include font-face( Josefin Sans, JosefinSans-Regular );
-// @include font-face( Josefin Sans, JosefinSans-Italic, italic );
 @include font-face( Josefin Sans, JosefinSans-SemiBold, normal, 600 );
-// @include font-face( Josefin Sans, JosefinSans-SemiBoldItalic, italic, 600 );
+@include font-face( Source Code Pro, SourceCodePro-Light, normal, 300 );
+@include font-face( Source Code Pro, SourceCodePro-Regular );
 
 html,
 body {
@@ -127,6 +127,18 @@ h3 {
     font-size: 1.25em;
 }
 
+.monospace {
+    padding: 0 2.5%;
+
+    p {
+        font-family: $mono_font;
+        font-size: .9em;
+        font-weight: 300;
+        text-indent: 0;
+        line-height: 1.25em;
+        letter-spacing: -1pt;
+    }
+}
 
 /**
  * Blockquotes and Citations formatting
@@ -155,6 +167,39 @@ blockquote {
     }
 }
 
+
+/**
+* Dialogue lists formatting
+*
+* @link https://css-tricks.com/snippets/html/glyphs/
+* @link https://css-tricks.com/pseudo-element-roundup/
+*/
+.dialogue {
+    li {
+        list-style-type: none;
+
+        &:nth-child( even ) {
+            font-style: italic;
+        }
+    }
+
+    p,
+    li:only-child {
+        &:before,
+        &:after {
+            font-size: 1.25em;
+            line-height: 1em;
+        }
+
+        &:before {
+           content: '- \201C \2009';
+        }
+
+        &:after {
+           content: ' \201D';
+        }
+    }
+}
 
 
 /**
