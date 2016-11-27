@@ -11,6 +11,11 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
 
 ***
 
+**v0.4.2**
+- fix publisher logo image margins
+- update black color defaults, styles for titles, dialogues and text color
+- add custom ebook initial styles to scss files
+
 **v0.4.1**
 - fix typo error in pandoc command
 - add monospace & dialogue TAGS and styles
