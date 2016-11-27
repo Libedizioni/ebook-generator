@@ -39,6 +39,7 @@ em {
 
 p {
     font-family: $base_font;
+    color: $text_color;
     // sets a minimum number of characters before and after the break
     // hyphenate-lines: 3;
     // cleaning up the ragged lines and breaks
@@ -77,6 +78,8 @@ h6 {
 }
 
 h1 {
+    font-size: 1.65em;
+
     &.title {
         font-size: 2.2em;
         font-weight: 600;
@@ -175,11 +178,15 @@ blockquote {
 * @link https://css-tricks.com/pseudo-element-roundup/
 */
 .dialogue {
+    ul {
+        padding-left: 0;
+    }
+
     li {
         list-style-type: none;
 
         &:nth-child( even ) {
-            font-style: italic;
+            // font-style: italic;
         }
     }
 
@@ -187,16 +194,17 @@ blockquote {
     li:only-child {
         &:before,
         &:after {
-            font-size: 1.25em;
-            line-height: 1em;
+            // font-size: 1.25em;
+            // line-height: 1em;
         }
 
         &:before {
-           content: '- \201C \2009';
+        //    content: '- \201C \2009';
+           content: '- ';
         }
 
         &:after {
-           content: ' \201D';
+        //    content: ' \201D';
         }
     }
 }
