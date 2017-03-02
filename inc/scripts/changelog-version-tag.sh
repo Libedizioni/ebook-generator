@@ -60,8 +60,8 @@ git merge -m "Release ${new_tag}" develop
 git tag -a "${new_tag}" -m ''
 # ----------------------------------------------------------------------------
 # 15 - Push master branch and new tag to remote
-git -c push.default=simple push origin master --porcelain
-git push origin --tags
+#git -c push.default=simple push origin master --porcelain
+#git push origin --tags
 # ----------------------------------------------------------------------------
 # 16 - Checkout to develop branch, ready to go
 # ----------------------------------------------------------------------------
