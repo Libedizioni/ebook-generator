@@ -11,6 +11,10 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
 
 ***
 
+**v0.5.2**     - 2017-03-02
+- Re-enable remote push for tags and master
+- Fix parsing in case of a master hotfix
+
 **v0.5.1**     - 2017-03-02
 - Update merge to fast-forward when releasing
 - Simplify CHANGELOG if commits are less than 8
