@@ -11,6 +11,25 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
 
 ***
 
+**v0.5.0**     - 2017-03-02
+- _New Features:_
+    - Add Pandoc templates for epub & pdf
+    - Add Calibre convert to build-pdf script
+    - Add multi ISBN parser and changelog-tag script
+    - add custom ebook initial styles to scss
+- _Updates:_
+    - update version & changelog to 0.4.2
+    - update styles for titles, dialogues and text color
+    - update black color defaults
+- _Bug fixes:_
+    - Fix responsive front-cover styles
+    - fix publisher logo image margins
+- _Other:_
+    - Remove old dialogue parser
+    - Typo corrections
+    - Process inline images in markdown with Pandoc
+    - Upgrade TAGS for markdown parser
+
 **v0.4.2**
 - fix publisher logo image margins
 - update black color defaults, styles for titles, dialogues and text color
