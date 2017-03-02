@@ -75,8 +75,8 @@ merge_commit=$(git log -n 1 --pretty=format:"%h")
 git tag -m '' -a "${new_tag}" "${merge_commit}"
 # ----------------------------------------------------------------------------
 # 16 - Push master branch and new tag to remote
-#git -c push.default=simple push origin master --porcelain
-#git push origin --tags
+git -c push.default=simple push origin master --porcelain
+git push origin --tags
 # ----------------------------------------------------------------------------
 # 17 - Checkout to develop branch, ready to go
 # ----------------------------------------------------------------------------
