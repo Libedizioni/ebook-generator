@@ -29,7 +29,11 @@
     "logo": "/full/path/to/publisher/logo/image",
     "repository": "https://github.com/PublisherName",
     "email": "publisher@email.com",
-    "isbn": "xxxxxxxxxxxxx",
+    "isbn": {
+      "epub": "xxxxxxxxxxxxx",
+      "pdf": "xxxxxxxxxxxxx",
+      "mobi": ""
+    },
     "copyright": "Publisher Full Editor Name - Location",
     "language": "eng",
     "license": "Creative Commons Attribution-ShareAlike 4.0 International - CC By-Sa 4.0",
@@ -45,8 +49,8 @@
   "tags": {
     "one": "Letteratura",
     "two": "Euskara",
-    "three": "",
-    "four": "",
+    "three": "Narrativa",
+    "four": "Fiabe",
     "five": "",
     "six": ""
   },
