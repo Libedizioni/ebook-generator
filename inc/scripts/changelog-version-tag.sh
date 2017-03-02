@@ -61,15 +61,18 @@ fi
 git checkout master
 # ----------------------------------------------------------------------------
 # 13 - Merge develop branch with develop
-git merge -m "Release ${new_tag}" develop
+git merge --no-ff -m "Release ${new_tag}" develop
 # ----------------------------------------------------------------------------
-# 14 - Tag git repo with current tag
-git tag -a "${new_tag}" -m ''
+# 14 - Get merge commit hash to tag
+merge_commit=$(git log -n 1 --pretty=format:"- %h")
 # ----------------------------------------------------------------------------
-# 15 - Push master branch and new tag to remote
+# 15 - Tag git repo with current tag
+git tag -m '' -a "${new_tag} ${merge_commit}"
+# ----------------------------------------------------------------------------
+# 16 - Push master branch and new tag to remote
 #git -c push.default=simple push origin master --porcelain
 #git push origin --tags
 # ----------------------------------------------------------------------------
-# 16 - Checkout to develop branch, ready to go
+# 17 - Checkout to develop branch, ready to go
 # ----------------------------------------------------------------------------
 git checkout develop
