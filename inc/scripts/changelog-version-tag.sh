@@ -8,6 +8,8 @@
 current_branch=$(git rev-parse --abbrev-ref HEAD)
 #      - current tag (with git)
 current_tag=$(git describe --abbrev=0 --tags "$(git rev-list --tags --max-count=1)")
+#      - commits number since last tag (with git)
+count_commits=$(git rev-list --no-merges --count "$(git describe --abbrev=0 --tags "$(git rev-list --tags --max-count=1)")"..HEAD)
 #      - new tag  (with node)
 new_tag=$(node -pe "require('./package.json').version" | awk '{ print "v"$1 }')
 #      - new tag header and date (with node and awk)
@@ -17,18 +19,23 @@ new_tag_header=$(node -pe "require('./package.json').version" | awk -v today="$(
 sed -i "/$current_tag/i $new_tag_header\n" CHANGELOG.md
 # ----------------------------------------------------------------------------
 # 4  - Write commits to temp file
-echo "- _New Features:_" >> templog
-git log "$(git describe --tags --abbrev=0)"..HEAD --no-merges --grep=^add -i --pretty=format:"    - %s" >> templog
-echo "" >> templog
-echo "- _Updates:_" >> templog
-git log "$(git describe --tags --abbrev=0)"..HEAD --no-merges --grep=^update -i --pretty=format:"    - %s" >> templog
-echo "" >> templog
-echo "- _Bug fixes:_" >> templog
-git log "$(git describe --tags --abbrev=0)"..HEAD --no-merges --grep=^fix -i --pretty=format:"    - %s" >> templog
-echo "" >> templog
-echo "- _Other:_" >> templog
-git log "$(git describe --tags --abbrev=0)"..HEAD --no-merges --grep=^add --grep=^fix --grep=^update -i --invert-grep --pretty=format:"    - %s" >> templog
-echo "" >> templog
+if [[ $count_commits -gt 8 ]] || [[  $count_commits == 8 ]]; then
+  echo "- _New Features:_" >> templog
+  git log "$(git describe --abbrev=0 --tags "$(git rev-list --tags --max-count=1)")"..HEAD --no-merges --grep=^add -i --pretty=format:"    - %s" >> templog
+  echo "" >> templog
+  echo "- _Updates:_" >> templog
+  git log "$(git describe --abbrev=0 --tags "$(git rev-list --tags --max-count=1)")"..HEAD --no-merges --grep=^update -i --pretty=format:"    - %s" >> templog
+  echo "" >> templog
+  echo "- _Bug fixes:_" >> templog
+  git log "$(git describe --abbrev=0 --tags "$(git rev-list --tags --max-count=1)")"..HEAD --no-merges --grep=^fix -i --pretty=format:"    - %s" >> templog
+  echo "" >> templog
+  echo "- _Other:_" >> templog
+  git log "$(git describe --abbrev=0 --tags "$(git rev-list --tags --max-count=1)")"..HEAD --no-merges --grep=^add --grep=^fix --grep=^update -i --invert-grep --pretty=format:"    - %s" >> templog
+  echo "" >> templog
+else
+  git log "$(git describe --abbrev=0 --tags "$(git rev-list --tags --max-count=1)")"..HEAD --no-merges --pretty=format:"- %s" >> templog
+  echo "" >> templog
+fi
 # ----------------------------------------------------------------------------
 # 5  - Write tempfile contents to changelog below new tag header
 sed -i -e "/$new_tag/r templog" CHANGELOG.md
@@ -54,13 +61,18 @@ fi
 git checkout master
 # ----------------------------------------------------------------------------
 # 13 - Merge develop branch with develop
-git merge -m "Release ${new_tag}" develop
+git merge --no-ff -m "Release ${new_tag}" develop
 # ----------------------------------------------------------------------------
-# 14 - Tag git repo with current tag
-git tag -a "${new_tag}" -m ''
+# 14 - Get merge commit hash to tag
+merge_commit=$(git log -n 1 --pretty=format:"- %h")
 # ----------------------------------------------------------------------------
-# 15 - Push master branch and new tag to remote
+# 15 - Tag git repo with current tag
+git tag -m '' -a "${new_tag} ${merge_commit}"
 # ----------------------------------------------------------------------------
-# 16 - Checkout to develop branch, ready to go
+# 16 - Push master branch and new tag to remote
+#git -c push.default=simple push origin master --porcelain
+#git push origin --tags
+# ----------------------------------------------------------------------------
+# 17 - Checkout to develop branch, ready to go
 # ----------------------------------------------------------------------------
 git checkout develop
