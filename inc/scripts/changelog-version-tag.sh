@@ -47,31 +47,36 @@ rm templog
 git add .
 # ----------------------------------------------------------------------------
 # 8  - Commit changes
-git commit -m "Update CHANGELOG.md and version to ${new_tag}"
+if [[ "${current_branch}" == "master" ]]; then
+  git commit -m "Release hotfix in ${new_tag}"
+else
+  git commit -m "Update CHANGELOG.md and version to ${new_tag}"
+fi
 # ----------------------------------------------------------------------------
 # 9  - Switch branch from feature to develop (if applicable)
 # 10 - Merge feature branch into develop (if applicable)
 # 11 - Remove merged feature branch (if applicable)
-if [[ "${current_branch}" != "develop" ]]; then
+if [[ "${current_branch}" != "develop" ]] && [[ "${current_branch}" != "master" ]]; then
   git checkout develop
   git merge -m "Prepare release for ${new_tag}" --no-ff "${current_branch}" && git branch -d "${current_branch}"
 fi
 # ----------------------------------------------------------------------------
-# 12 - Switch branch from current to master
-git checkout master
-# ----------------------------------------------------------------------------
+# 12 - Switch branch from current to master, if not already on it
 # 13 - Merge develop branch with develop
-git merge --no-ff -m "Release ${new_tag}" develop
+if [[ "${current_branch}" != "master" ]]; then
+  git checkout master
+  git merge --no-ff -m "Release ${new_tag}" develop
+fi
 # ----------------------------------------------------------------------------
 # 14 - Get merge commit hash to tag
-merge_commit=$(git log -n 1 --pretty=format:"- %h")
+merge_commit=$(git log -n 1 --pretty=format:"%h")
 # ----------------------------------------------------------------------------
 # 15 - Tag git repo with current tag
-git tag -m '' -a "${new_tag} ${merge_commit}"
+git tag -m '' -a "${new_tag}" "${merge_commit}"
 # ----------------------------------------------------------------------------
 # 16 - Push master branch and new tag to remote
-#git -c push.default=simple push origin master --porcelain
-#git push origin --tags
+git -c push.default=simple push origin master --porcelain
+git push origin --tags
 # ----------------------------------------------------------------------------
 # 17 - Checkout to develop branch, ready to go
 # ----------------------------------------------------------------------------
