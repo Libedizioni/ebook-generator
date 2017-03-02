@@ -11,6 +11,12 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
 
 ***
 
+**v0.5.1**     - 2017-03-02
+- Update merge to fast-forward when releasing
+- Simplify CHANGELOG if commits are less than 8
+- prevent push for tests
+- Add automatic push for master branch and tags
+
 **v0.5.0**     - 2017-03-02
 - _New Features:_
     - Add Pandoc templates for epub & pdf
