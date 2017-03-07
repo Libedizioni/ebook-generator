@@ -11,6 +11,9 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
 
 ***
 
+**v0.5.3**     - 2017-03-07
+- Fix wrong branches checks in changelog script
+
 **v0.5.2**     - 2017-03-02
 - Re-enable remote push for tags and master
 - Fix parsing in case of a master hotfix
