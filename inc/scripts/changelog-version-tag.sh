@@ -56,16 +56,17 @@ fi
 # 9  - Switch branch from feature to develop (if applicable)
 # 10 - Merge feature branch into develop (if applicable)
 # 11 - Remove merged feature branch (if applicable)
-if [[ "${current_branch}" != "develop" ]] && [[ "${current_branch}" != "master" ]]; then
-  git checkout develop
-  git merge -m "Prepare release for ${new_tag}" --no-ff "${current_branch}" && git branch -d "${current_branch}"
+if [ "${current_branch}" != "develop" ] && [ "${current_branch}" != "master" ]; then
+  git checkout develop && \
+  git merge --no-ff --no-edit -m "Prepare release for ${new_tag}" "${current_branch}" && \
+  git branch -d "${current_branch}"
 fi
 # ----------------------------------------------------------------------------
 # 12 - Switch branch from current to master, if not already on it
 # 13 - Merge develop branch with develop
-if [[ "${current_branch}" != "master" ]]; then
-  git checkout master
-  git merge --no-ff -m "Release ${new_tag}" develop
+if [ "${current_branch}" != "master" ]; then
+  git checkout master && \
+  git merge --no-ff --no-edit -m "Release ${new_tag}" develop
 fi
 # ----------------------------------------------------------------------------
 # 14 - Get merge commit hash to tag
