@@ -13,7 +13,7 @@ count_commits=$(git rev-list --no-merges --count "$(git describe --abbrev=0 --ta
 #      - new tag  (with node)
 new_tag=$(node -pe "require('./package.json').version" | awk '{ print "v"$1 }')
 #      - new tag header and date (with node and awk)
-new_tag_header=$(node -pe "require('./package.json').version" | awk -v today="$(date +"%Y-%m-%d")" '{ print "**v"$1"**", "    -", today }')
+new_tag_header=$(node -pe "require('./package.json').version" | awk '{ print "**v"$1"**" }')
 # ----------------------------------------------------------------------------
 # 3  - Write new tag header to changelog above current tag
 sed -i "/$current_tag/i $new_tag_header\n" CHANGELOG.md

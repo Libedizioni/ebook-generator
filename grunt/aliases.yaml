@@ -63,6 +63,7 @@
 - 'shell:search_replace_metadata'
 - 'shell:search_replace_booktitle'
 - 'shell:search_replace_style'
+- 'shell:search_replace_changelog_script'
 - 'shell:replace_readme'
 - 'shell:init_book_git_repo'
 

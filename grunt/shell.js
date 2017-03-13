@@ -181,6 +181,14 @@ module.exports = {
 			'sed -i "s|LEGALCODE|<%= book.publisher.legalcode %>|g" "<%= pkg.dir.sass %>/style.scss"'
 		].join(' && ')
 	},
+	search_replace_changelog_script: {
+		command: [
+			'cd ../<%= book.name %>',
+			'sed -i "s|package.json|book-config.json|g" "<%= pkg.dir.scripts %>/changelog-version-tag.sh"',
+			'sed -i "s|new_tag_header|new_book_tag_header|g" "<%= pkg.dir.scripts %>/changelog-version-tag.sh"',
+			'sed -i "s|new_tag|new_book_tag|g" "<%= pkg.dir.scripts %>/changelog-version-tag.sh"'
+		].join(' && ')
+	},
 	replace_readme: {
 		command: [
 			'cd ../<%= book.name %>',
@@ -188,25 +196,28 @@ module.exports = {
 			'touch README.md',
 			'echo "#<%= book.title %>" >> "README.md"',
 			'echo "##<%= book.author.name %> <%= book.author.surname %>" >> "README.md"',
-			'echo "_<%= book.description %>_" >> "README.md"',
+			'[ ! -z "<%= book.description %>" ] && echo "_<%= book.description %>_" >> "README.md"',
 			'echo "" >> "README.md"',
 			'echo "---" >> "README.md"',
 			'echo "" >> "README.md"',
-			'echo "- Translated by: **<%= book.translator.name %>**" >> "README.md"',
-			'echo "- Ebook design: **<%= book.editor.design %>**" >> "README.md"',
-			'echo "- Ebook layout: **<%= book.editor.layout %>**" >> "README.md"',
+			'[ ! -z "<%= book.translator.name %>" ] && echo "- Translated by: **<%= book.translator.name %>**" >> "README.md"',
+			'[ ! -z "<%= book.editor.design %>" ] && echo "- Ebook design: **<%= book.editor.design %>**" >> "README.md"',
+			'[ ! -z "<%= book.editor.layout %>" ] && echo "- Ebook layout: **<%= book.editor.layout %>**" >> "README.md"',
 			'echo "- Publisher: **<%= book.publisher.name %>**" >> "README.md"',
-			'echo "- ISBN: **<%= book.publisher.isbn.epub %>**" >> "README.md"',
+			'[ ! -z "<%= book.publisher.isbn.epub %>" ] || [ ! -z "<%= book.publisher.isbn.pdf %>" ] || [ ! -z "<%= book.publisher.isbn.mobi %>" ] && echo "- ISBN:" >> "README.md"',
+			'[ ! -z "<%= book.publisher.isbn.epub %>" ] && echo "    - _epub_ - **<%= book.publisher.isbn.epub %>**" >> "README.md"',
+			'[ ! -z "<%= book.publisher.isbn.pdf %>" ] && echo "    - _pdf_ - **<%= book.publisher.isbn.pdf %>**" >> "README.md"',
+			'[ ! -z "<%= book.publisher.isbn.mobi %>" ] && echo "    - _mobi_ - **<%= book.publisher.isbn.mobi %>**" >> "README.md"',
 			'echo "" >> "README.md"',
 			'echo "**©** _$(date +\"%Y\")_ | <%= book.publisher.copyright %> | [<%= book.license %>](<%= book.publisher.legalcode %>)" >> "README.md"',
 			'echo "" >> "README.md"',
-			'echo "Original title: _**<%= book.original.title %>**_ published by _**<%= book.original.publisher %>**_ in _<%= book.original.year %>_" >> "README.md"',
+			'[ ! -z "<%= book.original.title %>" ] && echo "Original title: _**<%= book.original.title %>**_ published by _**<%= book.original.publisher %>**_ in _<%= book.original.year %>_" >> "README.md"',
 			'echo "" >> "README.md"',
 			'echo "---" >> "README.md"',
 			'echo "" >> "README.md"',
 			'echo "###### _This ebook was generated with [Ebook Generator](<%= pkg.repository.url %>) - by [<%= pkg.author.name %>](<%= pkg.author.url %>) | [<%= book.publisher.name %>](<%= book.publisher.repository %>)._" >> "README.md"',
 			'echo "" >> "README.md"'
-		].join(' && ')
+		].join(' \ \n ')
 	},
 	init_book_git_repo: {
 		command: [
@@ -215,6 +226,8 @@ module.exports = {
 			'grep -rl "book-config.json" .gitignore | xargs sed -i "/book-config.json/d"',
 			'rm CHANGELOG.md',
 			'touch CHANGELOG.md',
+			'echo "#<%= book.title %>" >> "CHANGELOG.md"',
+			'echo "#### _changelog & history_" >> "CHANGELOG.md"',
 			'git init',
 			'git config user.name "<%= book.repository.user.name %>"',
 			'git config user.email "<%= book.repository.user.email %>"',
@@ -229,11 +242,6 @@ module.exports = {
 	// ----------------------------------------- //
 	changelog_version_tag: {
 		command: [
-			// Setup Variables to pass to changelog-version-tag.sh
-			//'current_branch=$(git rev-parse --abbrev-ref HEAD)',
-			//'current_tag=$(git describe --abbrev=0 --tags $(git rev-list --tags --max-count=1))',
-			//'new_tag=$(node -pe "require(\'./package.json\').version" | awk \'{ print "v"$1 }\')',
-			//'new_tag_header=$(node -pe "require(\'./package.json\').version" | awk -v today="$(date +"%Y-%m-%d")" \'{ print "**v"$1"**", "    -", today }\')',
 			// Source and run build-pdf.sh
 			'. ./inc/scripts/changelog-version-tag.sh'
 		].join(' && ')
