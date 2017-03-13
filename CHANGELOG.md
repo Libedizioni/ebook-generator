@@ -11,6 +11,15 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
 
 ***
 
+**v0.6.0**
+- Add initial settings in scaffolded CHANGELOG
+- Scaffold README tags & fields only if they are set
+- Fix small typing error
+- Fix CHANGELOG formatting issues
+- Add search-replace changelog script in scaffold
+- Add scripts dir to package.json
+- Remove date from changelog-version-tag
+
 **v0.5.3**
 - Fix wrong branches checks in changelog script
 

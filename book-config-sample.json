@@ -30,8 +30,8 @@
     "repository": "https://github.com/PublisherName",
     "email": "publisher@email.com",
     "isbn": {
-      "epub": "xxxxxxxxxxxxx",
-      "pdf": "xxxxxxxxxxxxx",
+      "epub": "",
+      "pdf": "",
       "mobi": ""
     },
     "copyright": "Publisher Full Editor Name - Location",
@@ -56,7 +56,7 @@
   },
 
 
-  "version": "0.5.3",
+  "version": "0.6.0",
   "cover": "inc/images/cover.jpg",
   "fonts": "inc/fonts",
   "images": "inc/images",
