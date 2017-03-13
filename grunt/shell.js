@@ -181,6 +181,14 @@ module.exports = {
 			'sed -i "s|LEGALCODE|<%= book.publisher.legalcode %>|g" "<%= pkg.dir.sass %>/style.scss"'
 		].join(' && ')
 	},
+	search_replace_changelog_script: {
+		command: [
+			'cd ../<%= book.name %>',
+			'sed -i "s|package.json|book-config.json|g" "<%= pkg.dir.scripts %>/changelog-version-tag.sh"',
+			'sed -i "s|new_tag_header|new_book_tag_header|g" "<%= pkg.dir.scripts %>/changelog-version-tag.sh"',
+			'sed -i "s|new_tag|new_book_tag|g" "<%= pkg.dir.scripts %>/changelog-version-tag.sh"'
+		].join(' && ')
+	},
 	replace_readme: {
 		command: [
 			'cd ../<%= book.name %>',
@@ -229,11 +237,6 @@ module.exports = {
 	// ----------------------------------------- //
 	changelog_version_tag: {
 		command: [
-			// Setup Variables to pass to changelog-version-tag.sh
-			//'current_branch=$(git rev-parse --abbrev-ref HEAD)',
-			//'current_tag=$(git describe --abbrev=0 --tags $(git rev-list --tags --max-count=1))',
-			//'new_tag=$(node -pe "require(\'./package.json\').version" | awk \'{ print "v"$1 }\')',
-			//'new_tag_header=$(node -pe "require(\'./package.json\').version" | awk -v today="$(date +"%Y-%m-%d")" \'{ print "**v"$1"**", "    -", today }\')',
 			// Source and run build-pdf.sh
 			'. ./inc/scripts/changelog-version-tag.sh'
 		].join(' && ')
