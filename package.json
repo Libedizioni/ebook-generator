@@ -21,7 +21,8 @@
     "inc": "./inc",
     "fonts": "./inc/fonts",
     "images": "./inc/images",
-    "sass": "./inc/scss"
+    "sass": "./inc/scss",
+    "scripts": "./inc/scripts"
   },
   "devDependencies": {
   },
