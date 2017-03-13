@@ -226,6 +226,8 @@ module.exports = {
 			'grep -rl "book-config.json" .gitignore | xargs sed -i "/book-config.json/d"',
 			'rm CHANGELOG.md',
 			'touch CHANGELOG.md',
+			'echo "#<%= book.title %>" >> "CHANGELOG.md"',
+			'echo "#### _changelog & history_" >> "CHANGELOG.md"',
 			'git init',
 			'git config user.name "<%= book.repository.user.name %>"',
 			'git config user.email "<%= book.repository.user.email %>"',
