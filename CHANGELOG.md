@@ -11,32 +11,29 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
 
 ***
 
-**v0.5.3**     - 2017-03-07
+**v0.5.3**
 - Fix wrong branches checks in changelog script
 
-**v0.5.2**     - 2017-03-02
+**v0.5.2**
 - Re-enable remote push for tags and master
 - Fix parsing in case of a master hotfix
 
-**v0.5.1**     - 2017-03-02
+**v0.5.1**
 - Update merge to fast-forward when releasing
 - Simplify CHANGELOG if commits are less than 8
 - prevent push for tests
 - Add automatic push for master branch and tags
 
-**v0.5.0**     - 2017-03-02
+**v0.5.0**
 - _New Features:_
     - Add Pandoc templates for epub & pdf
     - Add Calibre convert to build-pdf script
     - Add multi ISBN parser and changelog-tag script
-    - add custom ebook initial styles to scss
 - _Updates:_
     - update version & changelog to 0.4.2
     - update styles for titles, dialogues and text color
-    - update black color defaults
 - _Bug fixes:_
     - Fix responsive front-cover styles
-    - fix publisher logo image margins
 - _Other:_
     - Remove old dialogue parser
     - Typo corrections
@@ -53,12 +50,10 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
 - add monospace & dialogue TAGS and styles
 
 **v0.4.0**
-
 - _New Features:_
     - add TOC title to yaml metadata block
     - add font-face sass mixin
     - add rules for cover image
-
 - _Updates:_
     - intro structure and output
     - book-config-sample.json
@@ -67,7 +62,6 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
     - grunt shell intro parsing task
     - markdown process & epub build scripts
     - all pandoc build commands in .sh scripts
-
 - _Bug fixes:_
     - small issues in scss font-face mixin
     - responsive_images task size & alias
@@ -76,49 +70,40 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
     - intro section(s) with newly defined tags
 
 **v0.3.0**
-
 - fix: refactor all .docx tags and markdown edits parsing to avoid clashes in tags syntax
 - fix: correct intro txt files
 
 **v0.2.4**
-
 - fix: add warning to readme
 - update: add search_replace_intro to "sources" grunt alias and some defaults to css
 
 **v0.2.3**
-
 - fix: cleanup .scss files & update version tags
 - update: simplify book scaffolding with book-config-sample instead of book-config.json
 - fix: correct files copy & better readme formatting
 
 **v0.2.2**
-
 - fix small issues in README.md
 - add a set of docx tags according to those [listed in Wiki](https://github.com/Libedizioni/ebook-generator/wiki/Docx-Formatting-Shortcuts) to process-markdown-edits script
 - fix docx tags for intro .txt files
 - add minimal text-formatting css styles
 
 **v0.2.1**
-
 - fix README.md formatting issue
 
 **v0.2.0**
-
 - update README.md contents
 - add links to docs at repository's Wiki
 
 **v0.1.2**
-
 - fix assets grunt aliases ordering
 - update and add new docx tags
 
 **v0.1.1**
-
 - fix grunt aliases & tasks
 - update build pdf script & task
 - add git remote to book-config
 
 **v0.1.0**
-
 - initial working version
 - alpha stage, without customizations
