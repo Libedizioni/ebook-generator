@@ -11,6 +11,9 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
 
 ***
 
+**v0.6.1**
+- Update bash scripts coding standards
+
 **v0.6.0**
 - Add initial settings in scaffolded CHANGELOG
 - Scaffold README tags & fields only if they are set

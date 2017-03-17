@@ -2,10 +2,10 @@
 
 # measure script timing
 time_start() {
-    START=$(date +%s%3N)
+  START=$(date +%s%3N)
 }
 time_end() {
-    END=$(( $(date +%s%3N) - $START ))
+  END=$(( $(date +%s%3N) - $START ))
 }
 
 # setup script variables
@@ -19,39 +19,39 @@ ZIP="$BUILD/pdf/$BOOKNAME.zip"
 
 # remove previous build version
 clean() {
-    rm -f "$PDF"
+  rm -f "$PDF"
 }
 
 # build pdf with LaTex Pandoc template
 build_pdf_latex() {
-    echo "[+] now building pdf..."
-    mkdir -p "$BUILD/pdf"
-    # --variable mainfont='Raleway-Regular' \
-    # --variable documentclass="$LATEX_CLASS" \
-    pandoc --toc --toc-depth="$TOC_DEPTH" --latex-engine=$LATEX_ENGINE \
-    --template="$TEMPLATE_PDF" \
-    -o "$PDF" "$TITLE" $SOURCE
+  echo "[+] now building pdf..."
+  mkdir -p "$BUILD/pdf"
+  # --variable mainfont='Raleway-Regular' \
+  # --variable documentclass="$LATEX_CLASS" \
+  pandoc --toc --toc-depth="$TOC_DEPTH" --latex-engine=$LATEX_ENGINE \
+  --template="$TEMPLATE_PDF" \
+  -o "$PDF" "$TITLE" $SOURCE
 }
 
 # build pdf with Calibre ebook-convert cli
 build_pdf_calibre() {
-    echo "[+] now building pdf..."
-    mkdir -p "$BUILD/pdf"
+  echo "[+] now building pdf..."
+  mkdir -p "$BUILD/pdf"
 
-    cp "$EPUB_SRC" "$EPUB"
-    mv "$EPUB" "$ZIP"
-    unzip -d "$BUILD/pdf/$BOOKNAME" "$ZIP"
-    sed -i "s/$ISBN_EPUB/$ISBN_PDF/g" "$BUILD/pdf/$BOOKNAME/ch002.xhtml"
-    sed -i "s/$ISBN_EPUB/$ISBN_PDF/g" "$BUILD/pdf/$BOOKNAME/content.opf"
-    sed -i "s/$ISBN_EPUB/$ISBN_PDF/g" "$BUILD/pdf/$BOOKNAME/toc.ncx"
-    rm "$ZIP"
-    cd "$BUILD/pdf/$BOOKNAME"
-    zip -r "../$BOOKNAME.zip" *
-    cd ../../..
-    mv "$ZIP" "$EPUB"
-    rm -rf "$BUILD/pdf/$BOOKNAME"
+  cp "$EPUB_SRC" "$EPUB"
+  mv "$EPUB" "$ZIP"
+  unzip -d "$BUILD/pdf/$BOOKNAME" "$ZIP"
+  sed -i "s/$ISBN_EPUB/$ISBN_PDF/g" "$BUILD/pdf/$BOOKNAME/ch002.xhtml"
+  sed -i "s/$ISBN_EPUB/$ISBN_PDF/g" "$BUILD/pdf/$BOOKNAME/content.opf"
+  sed -i "s/$ISBN_EPUB/$ISBN_PDF/g" "$BUILD/pdf/$BOOKNAME/toc.ncx"
+  rm "$ZIP"
+  cd "$BUILD/pdf/$BOOKNAME"
+  zip -r "../$BOOKNAME.zip" *
+  cd ../../..
+  mv "$ZIP" "$EPUB"
+  rm -rf "$BUILD/pdf/$BOOKNAME"
 
-    ebook-convert "$EPUB" "$PDF" \
+  ebook-convert "$EPUB" "$PDF" \
     --unit millimeter \
     --custom-size 120x170 \
     --preserve-cover-aspect-ratio \
@@ -69,7 +69,7 @@ build_pdf_calibre() {
     --publisher "$PUBLISHER" \
     --tags "$TAGS"
 
-    rm "$EPUB"
+  rm "$EPUB"
 }
 
 # report script info and execution time
