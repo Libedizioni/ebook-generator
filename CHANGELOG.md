@@ -11,6 +11,11 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
 
 ***
 
+**v0.6.2**
+- Fix tabs in .scss files
+- Fix indents in shell scripts
+- Fix spaces in .js files
+
 **v0.6.1**
 - Update bash scripts coding standards
 

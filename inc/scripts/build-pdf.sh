@@ -74,14 +74,14 @@ build_pdf_calibre() {
 
 # report script info and execution time
 report() {
-    sec_diff=$(($END / 1000))
-    ms_hrs=$(printf "%02d" $(($sec_diff / 3600)))
-    ms_min=$(printf "%02d" $((($sec_diff / 60) % 60)))
-    ms_sec=$(printf "%02d" $(($sec_diff % 60)))
-    ms_msec=$(printf "%03d" $(($END % 1000)))
-    TOT_TIME="$ms_hrs:$ms_min:$ms_sec:$ms_msec"
+  sec_diff=$(($END / 1000))
+  ms_hrs=$(printf "%02d" $(($sec_diff / 3600)))
+  ms_min=$(printf "%02d" $((($sec_diff / 60) % 60)))
+  ms_sec=$(printf "%02d" $(($sec_diff % 60)))
+  ms_msec=$(printf "%03d" $(($END % 1000)))
+  TOT_TIME="$ms_hrs:$ms_min:$ms_sec:$ms_msec"
 
-    echo "Script $( basename $0 ) execution time: " "$TOT_TIME"
+  echo "Script $( basename $0 ) execution time: " "$TOT_TIME"
 }
 
 # get it done!
