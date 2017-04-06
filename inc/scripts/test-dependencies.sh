@@ -1,9 +1,9 @@
 #!/bin/bash
 
 if [[ "it_IT" != $CURRENT_LOCALE ]]; then
-    echo "[+] Testing dependencies..."
+  echo "[+] Testing dependencies..."
 else
-    echo "[+] Controllo delle dipendenze..."
+  echo "[+] Controllo delle dipendenze..."
 fi
 
 if [[ ! -x $(which pandoc) ]] ||
