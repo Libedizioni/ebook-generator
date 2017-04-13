@@ -16,6 +16,7 @@ PDF="$BUILD/pdf/$BOOKNAME.pdf"
 EPUB_SRC="$BUILD/epub/$BOOKNAME.epub"
 EPUB="$BUILD/pdf/$BOOKNAME.epub"
 ZIP="$BUILD/pdf/$BOOKNAME.zip"
+CURR_DATE=$(date +"%Y")
 
 # remove previous build version
 clean() {
@@ -65,7 +66,7 @@ build_pdf_calibre() {
     --isbn "$ISBN_PDF" \
     --comments "$DESCRIPTION" \
     --language ita \
-    --pubdate 2016 \
+    --pubdate "$CURR_DATE" \
     --publisher "$PUBLISHER" \
     --tags "$TAGS"
 

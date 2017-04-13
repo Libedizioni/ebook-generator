@@ -19,7 +19,7 @@ prepare_markdown() {
   echo "[+] preparing markdown files..."
 
   # search for .docx files
-  DOCX_FILES=$( find "$DOCX" -type f -name '*.docx' -print )
+  DOCX_FILES=$( find "$DOCX" -type f -name '*.docx' -print | sort )
 
   # loop all .docx files found:
   for SELECTED in $DOCX_FILES

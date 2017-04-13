@@ -10,21 +10,31 @@
 //
 // @link https://www.google.com/fonts
 
-/// Default Sans Serif font stacks fallback
+/// Default Sans Serif font stack fallback
 /// @access public
 /// @type String
 /// @group typography
-$sans-serif: ( sans-serif );
-//$sans-serif: ( 'Helvetica Neue', Helvetica, Arial, sans-serif );
+//$sans-serif: ( sans-serif );
+$sans-serif: ( 'Arial', 'Helvetica', 'Helvetica Neue', 'Lucida Grande', 'Trebuchet MS', 'Verdana', sans-serif );
 
-/// Default Serif font stacks fallback
+/// Default Serif font stack fallback
 /// @access public
 /// @type String
 /// @group typography
-$serif:      ( serif );
-//$serif:      ( Georgia, Cambria, 'Times New Roman', Times, serif );
+//$serif:      ( serif );
+$serif:      ( 'Georgia', 'Cambria', 'Palatino', 'Times New Roman', 'Times', serif );
 
-$mono: ( monospace );
+/// Default Monospace font stack fallback
+/// @access public
+/// @type String
+/// @group typography
+$monospace:       ( 'Courier New', 'Lucida Console', 'Monaco', 'Andale Mono', monospace );
+
+/// Default Cursive font stack fallback
+/// @access public
+/// @type string
+/// @group typography
+$cursive: ( 'Comic Sans', 'Comic Sans MS', 'Zapf Chancery', 'Coronetscript', 'Florence', 'Parkavenue', cursive );
 
 
 /// Base paragraph font family
