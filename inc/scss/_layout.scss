@@ -48,6 +48,9 @@ p {
 	// word-wrap: break-word;
 }
 
+/**
+ * Remove margins between paragraphs
+ */
 .compact,
 .compact p {
 	margin-top: 0;
@@ -144,6 +147,19 @@ h3 {
 	}
 }
 
+.condensed {
+    // padding: 0 2.5%;
+
+    p {
+        font-family: $small_font;
+        font-size: .9em;
+        font-weight: 300;
+        text-indent: 0;
+        line-height: 1.15em;
+        // letter-spacing: -1pt;
+    }
+}
+
 /**
  * Blockquotes and Citations formatting
  */
@@ -193,25 +209,6 @@ blockquote {
 .no-break {
 	page-break-inside: avoid;
 }
-
-/**
- * Center a section vertically in a page
- *
- * this needs two elements to be a valid epub 2 decalration:
- *   - a wrapper with display:table
- *   - a container as a table-cell to center vertically
- */
-.table {
-	display: table;
-	width: 100%;
-	height: $page_height;
-}
-
-.middle {
-	display: table-cell;
-	vertical-align: middle;
-}
-
 
 /**
  * Helper classes

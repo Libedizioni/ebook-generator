@@ -13,7 +13,7 @@ process_markdown_edits() {
   echo "[+] fixing all docx editing shortcuts in markdown files:"
 
   # search for .md files
-  MD_FILES=$( find "$SRC" -type f -name '*.md' -print )
+  MD_FILES=$( find "$SRC" -type f -name '*.md' -print | sort )
 
   for SELECTED in $MD_FILES
     # and convert each to markdown
@@ -44,7 +44,7 @@ process_markdown_edits() {
       # search and replace css classes between {: :} delimiters
       sed -i '/{:/,/:}/s/LEFT/alignleft/g; s/CENTER/aligncenter/g; s/RIGHT/alignright/g; s/CITE/citation/g; s/SMALLER/smaller/g; s/SMALL/small/g; s/BIG/big/g; s/BIGGER/bigger/g; s/+TAB/linepush/g; s/-TAB/linepull/g' "$SELECTED"
       # search and replace css classes between {+ +} delimiters
-      sed -i '/{+/,/+}/s/LEFT/alignleft/g; s/CENTER/aligncenter/g; s/RIGHT/alignright/g; s/CITE/citation/g; s/SMALLER/smaller/g; s/SMALL/small/g; s/BIG/big/g; s/BIGGER/bigger/g; s/COMPACT/compact/g; s/BLOCK/no-break/g; s/MONO/monospace/g' "$SELECTED"
+      sed -i '/{+/,/+}/s/LEFT/alignleft/g; s/CENTER/aligncenter/g; s/RIGHT/alignright/g; s/CITE/citation/g; s/SMALLER/smaller/g; s/SMALL/small/g; s/BIG/big/g; s/BIGGER/bigger/g; s/COMPACT/compact/g; s/BLOCK/no-break/g; s/MONO/monospace/g; s/CONDENSED/condensed/g; s/COLUMNS/col/g; s/2COL/col-2/g; s/3COL/col-3/g; s/4COL/col-4/g; s/LAST/col-last/g' "$SELECTED"
       # search for opening and closing {: :} and append
       # a closing html paragraph tag to end of line
       sed -i -e '/{:/{;/:}/s/$/<\/p>/;}' "$SELECTED"

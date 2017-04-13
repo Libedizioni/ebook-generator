@@ -11,6 +11,16 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
 
 ***
 
+**v0.6.3**
+- Better defaults for font stacks
+- Add libe.epub3 to dev templates
+- Fix table of contents + section in style.scss
+- Add condensed styles & move tables to own file
+- Rename header.scss to headings.scss
+- Use current date in pdf builds
+- Add sort options + new docx tags
+- Fix ISBN parsing in grunt shell task
+
 **v0.6.2**
 - Fix tabs in .scss files
 - Fix indents in shell scripts
