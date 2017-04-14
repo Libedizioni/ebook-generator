@@ -11,6 +11,9 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
 
 ***
 
+**v0.6.5**
+- Fix ISBN definitions in grunt shell
+
 **v0.6.4**
 - Fix empty ISBN parsing
 - Fix fonts definitions in _typography.scss
