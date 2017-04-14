@@ -37,14 +37,21 @@ build_pdf_latex() {
 # build pdf with Calibre ebook-convert cli
 build_pdf_calibre() {
   echo "[+] now building pdf..."
+  # create pdf dir if it does not exist
   mkdir -p "$BUILD/pdf"
 
   cp "$EPUB_SRC" "$EPUB"
   mv "$EPUB" "$ZIP"
   unzip -d "$BUILD/pdf/$BOOKNAME" "$ZIP"
-  sed -i "s/$ISBN_EPUB/$ISBN_PDF/g" "$BUILD/pdf/$BOOKNAME/ch002.xhtml"
-  sed -i "s/$ISBN_EPUB/$ISBN_PDF/g" "$BUILD/pdf/$BOOKNAME/content.opf"
-  sed -i "s/$ISBN_EPUB/$ISBN_PDF/g" "$BUILD/pdf/$BOOKNAME/toc.ncx"
+  if [ ! -z $ISBN_PDF ]; then
+    sed -i "s/$ISBN_EPUB/$ISBN_PDF/g" "$BUILD/pdf/$BOOKNAME/ch002.xhtml"
+    sed -i "s/$ISBN_EPUB/$ISBN_PDF/g" "$BUILD/pdf/$BOOKNAME/content.opf"
+    sed -i "s/$ISBN_EPUB/$ISBN_PDF/g" "$BUILD/pdf/$BOOKNAME/toc.ncx"
+  else
+    sed -i "s/ISBN $ISBN_EPUB//g" "$BUILD/pdf/$BOOKNAME/ch002.xhtml"
+    sed -i "s/ISBN $ISBN_EPUB//g" "$BUILD/pdf/$BOOKNAME/content.opf"
+    sed -i "s/ISBN $ISBN_EPUB//g" "$BUILD/pdf/$BOOKNAME/toc.ncx"
+  fi
   rm "$ZIP"
   cd "$BUILD/pdf/$BOOKNAME"
   zip -r "../$BOOKNAME.zip" *

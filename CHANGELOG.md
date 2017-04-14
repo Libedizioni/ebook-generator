@@ -11,6 +11,10 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
 
 ***
 
+**v0.6.4**
+- Fix empty ISBN parsing
+- Fix fonts definitions in _typography.scss
+
 **v0.6.3**
 - Better defaults for font stacks
 - Add libe.epub3 to dev templates
