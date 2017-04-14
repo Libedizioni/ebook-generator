@@ -44,22 +44,14 @@ module.exports = {
 			'TEMPLATE_EPUB=<%= book.templates.epub %>',
 			'ISBN_EPUB=<%= book.publisher.isbn.epub %>',
 			// Set proper ISBN for epub file format
-			'[ ! -z "$ISBN_EPUB" ] && \
-				sed -i "s|BOOK_ISBN|ISBN <%= book.publisher.isbn.epub %>|g" "<%= pkg.dir.inc %>/title.yaml" || \
-				sed -i "s|BOOK_ISBN|ISBN -|g" "<%= pkg.dir.inc %>/title.yaml"',
-			'[ ! -z "$ISBN_EPUB" ] && \
-				sed -i "s|opf:scheme=\"isbn\">BOOK_ISBN|opf:scheme=\"isbn\"><%= book.publisher.isbn.epub %>|g" "<%= pkg.dir.inc %>/metadata.xml" || \
-				sed -i "s|opf:scheme=\"isbn\">BOOK_ISBN|opf:scheme=\"isbn\">|g" "<%= pkg.dir.inc %>/metadata.xml"',
+			'if [ ! -z "$ISBN_EPUB" ]; then sed -i "s|BOOK_ISBN|ISBN <%= book.publisher.isbn.epub %>|g" "<%= pkg.dir.inc %>/title.yaml"; fi',
+			'if [ ! -z "$ISBN_EPUB" ]; then sed -i "s|BOOK_ISBN|<%= book.publisher.isbn.epub %>|g" "<%= pkg.dir.inc %>/metadata.xml"; fi',
 			// Source and run build-epub.sh
 			'. ./inc/scripts/build-epub.sh',
 			// Reset BOOK_ISBN tag to initial state
-			'[ ! -z "$ISBN_EPUB" ] && "Reset BOOK_ISBN tag to initial state for EPUB"',
-			'[ ! -z "$ISBN_EPUB" ] && \
-				sed -i "s|ISBN <%= book.publisher.isbn.epub %>|BOOK_ISBN|g" "<%= pkg.dir.inc %>/title.yaml" || \
-				sed -i "s|ISBN -|BOOK_ISBN|g" "<%= pkg.dir.inc %>/title.yaml"',
-			'[ ! -z "$ISBN_EPUB" ] && \
-				sed -i "s|opf:scheme=\"isbn\"><%= book.publisher.isbn.epub %>|opf:scheme=\"isbn\">BOOK_ISBN|g" "<%= pkg.dir.inc %>/metadata.xml" || \
-				sed -i "s|opf:scheme=\"isbn\">|opf:scheme=\"isbn\">BOOK_ISBN|g" "<%= pkg.dir.inc %>/metadata.xml"'
+			'if [ ! -z "$ISBN_EPUB" ]; then echo "Reset BOOK_ISBN tag to initial state for EPUB"; fi',
+			'if [ ! -z "$ISBN_EPUB" ]; then sed -i "s|ISBN <%= book.publisher.isbn.epub %>|BOOK_ISBN|g" "<%= pkg.dir.inc %>/title.yaml"; fi',
+			'if [ ! -z "$ISBN_EPUB" ]; then sed -i "s|<%= book.publisher.isbn.epub %>|BOOK_ISBN|g" "<%= pkg.dir.inc %>/metadata.xml"; fi'
 		].join(' && ')
 	},
 	build_html: {
@@ -92,29 +84,17 @@ module.exports = {
 			'TAGS="<%= book.tags.one %>,<%= book.tags.two %>,<%= book.tags.three %>,<%= book.tags.four %>,<%= book.tags.five %>,<%= book.tags.six %>"',
 			// Convert either with LaTex or Calibre
 			'ENGINE=Calibre',
-			// Check variables and set them according to their values
-			'[ -z "<%= book.publisher.isbn.epub %>" ] && ISBN_EPUB="ISBN -" || ISBN_EPUB=<%= book.publisher.isbn.epub %>',
-			'[ -z "<%= book.publisher.isbn.pdf %>" ] && ISBN_PDF="ISBN -" || ISBN_PDF=<%= book.publisher.isbn.pdf %>',
 			// Set proper ISBN for pdf file format
-			'[ ! -z "<%= book.publisher.isbn.pdf %>" ] && \
-				sed -i "s|BOOK_ISBN|ISBN <%= book.publisher.isbn.pdf %>|g" "<%= pkg.dir.inc %>/title.yaml" || \
-				sed -i "s|BOOK_ISBN|ISBN -|g" "<%= pkg.dir.inc %>/title.yaml"',
-			'[ ! -z "<%= book.publisher.isbn.pdf %>" ] && \
-				sed -i "s|opf:scheme=\"isbn\">BOOK_ISBN|opf:scheme=\"isbn\"><%= book.publisher.isbn.pdf %>|g" "<%= pkg.dir.inc %>/metadata.xml" || \
-				sed -i "s|opf:scheme=\"isbn\">BOOK_ISBN|opf:scheme=\"isbn\">|g" "<%= pkg.dir.inc %>/metadata.xml"',
+			'if [ ! -z "$ISBN_PDF" ]; then sed -i "s|BOOK_ISBN|ISBN <%= book.publisher.isbn.pdf %>|g" "<%= pkg.dir.inc %>/title.yaml"; fi',
+			'if [ ! -z "$ISBN_PDF" ]; then sed -i "s|BOOK_ISBN|<%= book.publisher.isbn.pdf %>|g" "<%= pkg.dir.inc %>/metadata.xml"; fi',
 			// Source and run build-pdf.sh
 			'. ./inc/scripts/build-pdf.sh',
 			// Reset BOOK_ISBN tag to initial state
-			'[ ! -z "<%= book.publisher.isbn.pdf %>" ] && "Reset BOOK_ISBN tag to initial state for PDF"',
-			'[ ! -z "<%= book.publisher.isbn.pdf %>" ] && \
-				sed -i "s|ISBN <%= book.publisher.isbn.pdf %>|BOOK_ISBN|g" "<%= pkg.dir.inc %>/title.yaml" || \
-				sed -i "s|ISBN -|BOOK_ISBN|g" "<%= pkg.dir.inc %>/title.yaml"',
-			'[ ! -z "<%= book.publisher.isbn.pdf %>" ] && \
-				sed -i "s|opf:scheme=\"isbn\"><%= book.publisher.isbn.pdf %>|opf:scheme=\"isbn\">BOOK_ISBN|g" "<%= pkg.dir.inc %>/metadata.xml" || \
-				sed -i "s|opf:scheme=\"isbn\">|opf:scheme=\"isbn\">BOOK_ISBN|g" "<%= pkg.dir.inc %>/metadata.xml"'
+			'if [ ! -z "$ISBN_PDF" ]; then echo "Reset BOOK_ISBN tag to initial state for PDF"; fi',
+			'if [ ! -z "$ISBN_PDF" ]; then sed -i "s|ISBN <%= book.publisher.isbn.pdf %>|BOOK_ISBN|g" "<%= pkg.dir.inc %>/title.yaml"; fi',
+			'if [ ! -z "$ISBN_PDF" ]; then sed -i "s|<%= book.publisher.isbn.pdf %>|BOOK_ISBN|g" "<%= pkg.dir.inc %>/metadata.xml"; fi'
 		].join(' && ')
 	},
-	/*jshint multistr:false */
 	test_dependencies: {
 		command: './inc/scripts/test-dependencies.sh'
 	},
