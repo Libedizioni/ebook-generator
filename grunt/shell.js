@@ -77,6 +77,8 @@ module.exports = {
 			'INTRO=$( find "<%= book.path.intro %>" -maxdepth 1 -type f -name "*.md" -printf "%p " )',
 			'SOURCE=$( find "<%= book.path.src %>" -type f -name "*.md" -printf "%p " )',
 			'TEMPLATE_PDF=<%= book.templates.pdf %>',
+			'ISBN_PDF=<%= book.publisher.isbn.pdf %>',
+			'ISBN_EPUB=<%= book.publisher.isbn.epub %>',
 			// Additional fields needed by Calibre ebook-convert
 			'AUTHOR="<%= book.author.name %> <%= book.author.surname %>"',
 			'PUBLISHER="<%= book.publisher.name %>"',
