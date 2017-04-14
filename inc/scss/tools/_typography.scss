@@ -51,13 +51,14 @@ $josefin:     'Josefin Sans', $sans-serif;
 /// @access public
 /// @type String
 /// @group typography
-$sourcecode:    'Source Code Pro', $mono;
+$sourcecode:    'Source Code Pro', $monospace;
 
 // assign them a semantic name, based on use,
 // and setup a custom icons font
 $base_font:    $raleway;
 $heading_font: $josefin;
 $mono_font:    $sourcecode;
+$small_font:   '';
 
 
 /// Icons Set font family
