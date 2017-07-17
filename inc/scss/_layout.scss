@@ -5,14 +5,14 @@
 
 // Include fonts with @font-face mixin
 // Usage: font-face( $font-family-name, $file-name, $style: '', $weight: '' )
-@include font-face( Raleway, Raleway-Regular );
-@include font-face( Raleway, Raleway-Italic, italic );
-@include font-face( Raleway, Raleway-SemiBold, normal, 600 );
-@include font-face( Raleway, Raleway-SemiBoldItalic, italic, 600 );
-@include font-face( Josefin Sans, JosefinSans-Regular );
-@include font-face( Josefin Sans, JosefinSans-SemiBold, normal, 600 );
-@include font-face( Source Code Pro, SourceCodePro-Light, normal, 300 );
-@include font-face( Source Code Pro, SourceCodePro-Regular );
+//@include font-face( Raleway, Raleway-Regular );
+//@include font-face( Raleway, Raleway-Italic, italic );
+//@include font-face( Raleway, Raleway-SemiBold, normal, 600 );
+//@include font-face( Raleway, Raleway-SemiBoldItalic, italic, 600 );
+//@include font-face( Josefin Sans, JosefinSans-Regular );
+//@include font-face( Josefin Sans, JosefinSans-SemiBold, normal, 600 );
+//@include font-face( Source Code Pro, SourceCodePro-Light, normal, 300 );
+//@include font-face( Source Code Pro, SourceCodePro-Regular );
 
 html,
 body {
