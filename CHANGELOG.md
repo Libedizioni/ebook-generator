@@ -11,6 +11,9 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
 
 ***
 
+**v0.6.10**
+- Fix MONOSPACE doc tag parsing issues
+
 **v0.6.9**
 - Fix book-config-sample initial version
 - Disable @font-face defaults in _layout.scss
