@@ -11,6 +11,9 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
 
 ***
 
+**v0.7.2**
+- Fix double brackets in changelog shell script
+
 **v0.7.1**
 - Update & Fix grunt aliases.yaml
 - Fix Pandoc CLI args due to new Pandoc syntax
