@@ -20,7 +20,7 @@ new_tag_header=$(node -pe "require('./package.json').version" | awk '{ print "**
 sed -i "/$current_tag/i $new_tag_header\n" CHANGELOG.md
 # ----------------------------------------------------------------------------
 # 3  - Write commits to temp file
-if [[ $count_commits -gt 8 ]] || [[  $count_commits == 8 ]]; then
+if [ $count_commits -gt 8 ] || [  $count_commits == 8 ]; then
   echo "- _New Features:_" >> templog
   git log "$(git describe --abbrev=0 --tags "$(git rev-list --tags --max-count=1)")"..HEAD --no-merges --grep=^add -i --pretty=format:"    - %s" >> templog
   echo "" >> templog
@@ -48,7 +48,7 @@ rm templog
 git add .
 # ----------------------------------------------------------------------------
 # 7  - Commit changes
-if [[ "${current_branch}" == "master" ]]; then
+if [ "${current_branch}" == "master" ]; then
   git commit -m "Release hotfix in ${new_tag}"
 else
   git commit -m "Update CHANGELOG.md and version to ${new_tag}"
