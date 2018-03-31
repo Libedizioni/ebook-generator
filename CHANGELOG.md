@@ -11,6 +11,13 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
 
 ***
 
+**v0.7.0**
+- Update changelog-version-tag shell script
+- Add mobi-build to grunt tasks and aliases
+- Add mobi-build shell script
+- Update dependencies test with KindleGen
+- Fix CHANGELOG intro links
+
 **v0.6.10**
 - Fix MONOSPACE doc tag parsing issues
 
