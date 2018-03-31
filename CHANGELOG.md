@@ -3,7 +3,7 @@
 
 This ebook generator is meant to simplify the efforts required to publish an ebook in different formats, starting with just a base set of .docx files.
 
-It takes advantage of [Pandoc] to convert between file formats, and uses grunt to perform its tasks as well as for compiling assets like css and images used in the ebook.
+It takes advantage of [Pandoc](https://pandoc.org/) to convert between file formats, and uses [Grunt](https://gruntjs.com/) to perform its tasks as well as for compiling assets like css and images used in the ebook.
 
 For more information, please take a look at the [**project's Wiki**](http://github.com/Libedizioni/ebook-generator/wiki)
 
@@ -11,12 +11,19 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
 
 ***
 
+**v0.7.0**
+- Update changelog-version-tag shell script
+- Add mobi-build to grunt tasks and aliases
+- Add mobi-build shell script
+- Update dependencies test with KindleGen
+- Fix CHANGELOG intro links
+
 **v0.6.10**
 - Fix MONOSPACE doc tag parsing issues
 
 **v0.6.9**
 - Fix book-config-sample initial version
-- Disable @font-face defaults in _layout.scss
+- Disable @font-face defaults in _layout.scss_
 - Add license and legal code to intro text parsing
 
 **v0.6.8**
@@ -34,7 +41,7 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
 
 **v0.6.4**
 - Fix empty ISBN parsing
-- Fix fonts definitions in _typography.scss
+- Fix fonts definitions in _typography.scss_
 
 **v0.6.3**
 - Better defaults for font stacks

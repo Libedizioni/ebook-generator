@@ -67,6 +67,33 @@ module.exports = {
 			'. ./inc/scripts/build-html.sh'
 		].join(' && ')
 	},
+	build_mobi: {
+		command: [
+			// Setup Variables to pass to build-mobi.sh
+			'BOOKNAME=<%= book.name %>',
+			'BUILD=<%= book.path.build %>',
+			'TOC_DEPTH=<%= book.tocdepth %>',
+			'INTRO=$( find "<%= book.path.intro %>" -maxdepth 1 -type f -name "*.md" -printf "%p " )',
+			'SOURCE=$( find "<%= book.path.src %>" -type f -name "*.md" -printf "%p " )',
+			'COVER_IMAGE=<%= book.cover %>',
+			'IMAGES=<%= book.images %>',
+			'FONTS=<%= book.fonts %>/*.ttf',
+			'CSS=<%= book.css %>',
+			'METADATA=<%= book.metadata %>',
+			'TITLE=<%= book.booktitle %>',
+			'ISBN_MOBI=<%= book.publisher.isbn.mobi %>',
+			'ISBN_EPUB=<%= book.publisher.isbn.epub %>',
+			// Set proper ISBN for mobi file format
+			'if [ ! -z "$ISBN_MOBI" ]; then sed -i "s|BOOK_ISBN|ISBN <%= book.publisher.isbn.mobi %>|g" "<%= pkg.dir.inc %>/title.yaml"; fi',
+			'if [ ! -z "$ISBN_MOBI" ]; then sed -i "s|BOOK_ISBN|<%= book.publisher.isbn.mobi %>|g" "<%= pkg.dir.inc %>/metadata.xml"; fi',
+			// Source and run build-mobi.sh
+			'. ./inc/scripts/build-mobi.sh',
+			// Reset BOOK_ISBN tag to initial state
+			'if [ ! -z "$ISBN_MOBI" ]; then echo "Reset BOOK_ISBN tag to initial state for MOBI"; fi',
+			'if [ ! -z "$ISBN_MOBI" ]; then sed -i "s|ISBN <%= book.publisher.isbn.mobi %>|BOOK_ISBN|g" "<%= pkg.dir.inc %>/title.yaml"; fi',
+			'if [ ! -z "$ISBN_MOBI" ]; then sed -i "s|<%= book.publisher.isbn.mobi %>|BOOK_ISBN|g" "<%= pkg.dir.inc %>/metadata.xml"; fi'
+		].join(' && ')
+	},
 	build_pdf: {
 		command: [
 			// Setup Variables to pass to build-pdf.sh

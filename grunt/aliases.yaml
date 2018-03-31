@@ -47,6 +47,10 @@
 - 'shell:prepare_markdown'
 - 'shell:process_markdown_edits'
 - 'shell:build_html'
+'single_mobi':
+- 'shell:prepare_markdown'
+- 'shell:process_markdown_edits'
+- 'shell:build_mobi'
 'single_pdf':
 - 'shell:prepare_markdown'
 - 'shell:process_markdown_edits'
@@ -88,6 +92,7 @@
 'build':
 - 'shell:build_epub'
 - 'shell:build_html'
+- 'shell:build_mobi'
 - 'shell:build_pdf'
 
 # --------------------------- #
