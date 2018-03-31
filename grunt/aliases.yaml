@@ -1,5 +1,13 @@
-# Grunt aliases for Minimal Framework.
+# Grunt aliases for Ebook Generator.
 ---
+# ------------------------------------ #
+#    EBOOK GENERATOR REPO HANDLING     #
+# ------------------------------------ #
+#     - changelog version tag & push
+# ------------------------------------ #
+'push_tag':
+- 'shell:changelog_version_tag'
+
 # ------------------------------------ #
 #    BOOK ASSETS WORKFLOW TASKS        #
 # ------------------------------------ #
@@ -7,14 +15,14 @@
 #     - minify and resize images       #
 # ------------------------------------ #
 # CSS compile and minify tasks
-# ----------------------------
+# ------------------------------------ #
 'styles':
 - 'sass'
 - 'postcss'
 - 'cssnano'
-
+# ------------------------------------ #
 # Images compression and resize tasks
-# -----------------------------------
+# ------------------------------------ #
 'imagemin_newer':
 - 'newer:imagemin'
 'resize_images':
@@ -56,7 +64,6 @@
 - 'shell:process_markdown_edits'
 - 'shell:build_pdf'
 
-
 # ------------------------------------------------- #
 # Scaffold a new ebook project with ebook-generator
 # ------------------------------------------------- #
@@ -92,8 +99,8 @@
 'build':
 - 'shell:build_epub'
 - 'shell:build_html'
-- 'shell:build_mobi'
 - 'shell:build_pdf'
+- 'shell:build_mobi'
 
 # --------------------------- #
 #   DEFAULT TASK

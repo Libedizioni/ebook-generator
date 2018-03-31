@@ -11,6 +11,11 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
 
 ***
 
+**v0.7.1**
+- Update & Fix grunt aliases.yaml
+- Fix Pandoc CLI args due to new Pandoc syntax
+- Fix grunt aliases
+
 **v0.7.0**
 - Update changelog-version-tag shell script
 - Add mobi-build to grunt tasks and aliases
