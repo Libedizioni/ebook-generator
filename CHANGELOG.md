@@ -11,6 +11,10 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
 
 ***
 
+**v0.8.1**
+- Add book title escaping in grunt shell task
+- Fix dependency test order in grunt aliases
+
 **v0.8.0**
 - Upgrade main repo package.json
 
