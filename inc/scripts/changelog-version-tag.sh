@@ -20,7 +20,7 @@ new_tag_header=$(node -pe "require('./package.json').version" | awk '{ print "**
 sed -i "/$current_tag/i $new_tag_header\n" CHANGELOG.md
 # ----------------------------------------------------------------------------
 # 3  - Write commits to temp file
-if [ $count_commits -gt 8 ] || [  $count_commits == 8 ]; then
+if [[ $count_commits -gt 8 ]] || [[  $count_commits == 8 ]]; then
   echo "- _New Features:_" >> templog
   git log "$(git describe --abbrev=0 --tags "$(git rev-list --tags --max-count=1)")"..HEAD --no-merges --grep=^add -i --pretty=format:"    - %s" >> templog
   echo "" >> templog
@@ -57,7 +57,7 @@ fi
 # 8  - Switch branch from feature to develop (if applicable)
 # 9 - Merge feature branch into develop (if applicable)
 # 10 - Remove merged feature branch (if applicable)
-if [ "${current_branch}" != "develop" ] && [ "${current_branch}" != "master" ]; then
+if [[ "${current_branch}" != "develop" ]] && [[ "${current_branch}" != "master" ]]; then
   git checkout develop && \
   git merge --no-ff --no-edit -m "Prepare release for ${new_tag}" "${current_branch}" && \
   git branch -d "${current_branch}"
