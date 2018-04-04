@@ -11,6 +11,13 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
 
 ***
 
+**v0.8.2**
+- Update build-epub shell script Pandoc command
+- Update Epub folder structure in mobi & pdf builds
+- Fix changelog-version-tag shell syntax issue
+- Add TODO to prepare-markdown shell script
+- Fix process markdown sed escapes
+
 **v0.8.1**
 - Add book title escaping in grunt shell task
 - Fix dependency test order in grunt aliases
