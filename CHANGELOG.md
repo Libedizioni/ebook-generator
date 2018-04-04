@@ -11,6 +11,11 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
 
 ***
 
+**v0.8.3**
+- Add footnotes formatting to sass files
+- Add hover and focus to links in sass _layout
+- Remove unused sass colors and mixins
+
 **v0.8.2**
 - Update build-epub shell script Pandoc command
 - Update Epub folder structure in mobi & pdf builds
