@@ -11,6 +11,9 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
 
 ***
 
+**v0.8.0**
+- Upgrade main repo package.json
+
 **v0.7.2**
 - Fix double brackets in changelog shell script
 
