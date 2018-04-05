@@ -11,6 +11,9 @@ Author: [Codice Ovvio](https://github.com/codiceovvio) | [Libe Edizioni](http://
 
 ***
 
+**v0.8.4**
+- Add dependencies & devDependencies to package.json
+
 **v0.8.3**
 - Add footnotes formatting to sass files
 - Add hover and focus to links in sass _layout
